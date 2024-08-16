@@ -2,19 +2,18 @@ body {
     font-family: Arial, sans-serif;
 }
 .navbar {
-color: black;
 display: flex;
+color: white;
 padding: 10px;
 text-align: center;
-position: fixed;
+background: linear-gradient(90deg, #6a11cb, #2575fc);
 justify-content: space-between;
 top: 0; 
 width: 100%;
-z-index: 100;
 padding-left: 10px;
 }
 .navbar a{
-    color: black;
+    color: white;
     text-decoration: none;
     padding: 10px;
     text-align: center;
@@ -52,4 +51,116 @@ padding-left: 10px;
 .row{
     display: flex;
     justify-content: space-between;
+}
+
+
+header {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 30px;
+    text-align: center;
+    z-index: 1;
+    background: linear-gradient(90deg, #6a11cb, #2575fc);
+    color: white;
+    padding: 50px 20px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 3em;
+    z-index: 100;
+    margin-top: -50px;
+    
+}
+
+header p {
+    margin-top: 50px;
+    font-size: 1.5em;
+    margin: 10px 0 0;
+}
+
+section {
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: white;
+    margin-bottom: 20px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+section h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #2575fc;
+}
+
+.core-values {
+    list-style-type: none;
+    padding: 0;
+}
+
+.core-values li {
+    font-size: 1.2em;
+    margin: 10px 0;
+}
+
+.services-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.service-item {
+    background-color: #e9ecef;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 10px;
+    flex-basis: 45%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.service-item h3 {
+    margin-top: 0;
+    font-size: 1.8em;
+    color: #2575fc;
+}
+
+.service-item p {
+    font-size: 1em;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+#scrollToTopBtn {
+    display: none; /* Hidden by default */
+    position: fixed;
+    bottom: 20px;
+    right: 30px;
+    z-index: 99; /* Place it on top */
+    border: none;
+    outline: none;
+    background-color: #555;
+    color: white;
+    cursor: pointer;
+    padding: 15px;
+    border-radius: 10px;
+    font-size: 18px;
+    transition: opacity 0.3s ease;
+}
+
+#scrollToTopBtn.show {
+    display: block;
+    opacity: 0.8;
+}
+
+#scrollToTopBtn:hover {
+    background-color: #333;
 }
