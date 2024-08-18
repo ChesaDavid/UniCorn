@@ -45,7 +45,7 @@
     
     .register-form {
         position: relative;
-        top: 10%;
+        top: 25%;
         left: auto;
         transform: translateY(-10%);
         padding: 50px;
@@ -125,3 +125,8 @@
         color: grey;
         font-weight: bold;
     }
+#notGood{
+    color: red;
+    font-size: 14px;
+    margin-top: 10px;
+}
