@@ -45,7 +45,7 @@ body {
 
 .login-form {
     position: relative;
-    top: auto;
+    top: 20%;
     left: auto;
     transform: translateY(-10%);
     padding: 50px;

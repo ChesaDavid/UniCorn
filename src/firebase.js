@@ -1,17 +1,17 @@
-import { initializeApp } from "firebase/app"; 
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { getFirestore ,doc} from "firebase/firestore";
 
-const firebaseApp = initializeApp({
+const firebaseApp = {
     apiKey: "AIzaSyCpoZSMXrJlu4PItlFxiAf1vJanTtX2CDs",
     authDomain: "unicorn-35e99.firebaseapp.com",
     projectId: "unicorn-35e99",
     storageBucket: "unicorn-35e99.appspot.com",
     messagingSenderId: "771497075079",
     appId: "1:771497075079:web:f7b0a0a3bc8f7a755ef322"
-});
+};
 
 const auth = getAuth(firebaseApp);
+const app = firebase.initializeApp(firebaseConfig);
 
 
 onAuthStateChanged(auth, user => {
@@ -24,15 +24,15 @@ onAuthStateChanged(auth, user => {
 const firestore = getFirestore();
 const uniCorn = doc(firestore, 'unicorn/UniCorn')
 
-// function addNewdocument() {
-//     const newDoc =  addDoc(docColectio ,{ 
-//             name: 'John Doe' 
-//         });
-//     console.log('Document written with ID: ${newDoc.id}' );
-// }
-// // https://www.youtube.com/watch?v=BjtxPj6jRM8 min 6:12
+function addNewdocument() {
+    const newDoc =  addDoc(docColectio ,{ 
+            name: 'John Doe' 
+        });
+    console.log('Document written with ID: ${newDoc.id}' );
+}
+// https://www.youtube.com/watch?v=BjtxPj6jRM8 min 6:12
 
-// // register auth listener
+// register auth listener
 function register() {
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;

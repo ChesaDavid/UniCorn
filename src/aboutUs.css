@@ -174,3 +174,67 @@ footer {
     color: grey;
     font-weight: bold;
 }
+.map{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: grey;
+    font-size: large;
+    font-weight: bold;
+    transition: color 0.3s ease;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    text-align: center;
+    transition: color 0.3s ease;
+}
+#map {
+    height: 600px; 
+    width: 600px;  
+
+}
+.info-about-us{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    gap: 50px;
+    
+}
+.one-connection img{
+    width: 30px;
+    height: 30px;
+}
+
+#profileImg{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    transition: border-color 0.3s ease;
+    left: auto;
+    right: 30%;
+    margin-bottom: 40px;
+}
+.connect a{
+    text-decoration: none;
+    color: black;
+}
+.one-connection{
+    display: flex;
+    text-decoration: none;
+    align-items: center;
+    font-weight: bold;
+    gap: 10px;
+}
+
+.one-connection:hover{
+    color: grey;
+    text-decoration: underline;
+}
+.short-founder-description{
+    margin-top: 20px;
+    font-size: 16px;
+    color: grey;
+    width: 300px;
+}

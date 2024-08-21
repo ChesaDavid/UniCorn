@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UniCorn - AboutUs</title>
     <link rel="stylesheet" href="./aboutUs.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    
 </head>
 <body>
     <div class="navbar">
@@ -60,9 +62,54 @@
             </div>
         </div>
     </section>
+    <div class="info-about-us">
+        <div class="connect">
+            <img src="/media/presentationPhoto.jpg" id="profileImg">
+            <a href="https://github.com/ChesaDavid">
+                <div class="one-connection">
+                    <img src="/media/github-svgrepo-com.svg" >
+                    <p>GitHub</p>
+                </div>
+            </a>
+            <a href="https://www.linkedin.com/feed/">
+                <div class="one-connection">
+                    <img src="/media/linkedin-161-svgrepo-com.svg">
+                    <p>LinkedIn</p>
+                </div>
+            </a>
+            <a href="https://www.instagram.com/david_chesa/?next=%2F">
+                <div class="one-connection">
+                    <img src="/media/instagram-167-svgrepo-com.svg">
+                    <p>Instagram</p>
+                </div>
+            </a>
+            <a href="./contact.html">
+                <div class="one-connection">
+                    <img src="/media/email-1573-svgrepo-com.svg">
+                    <p>Email</p>
+                </div>
+            </a>
+        </div>
+        <div class="short-founder-description">
+            <h2>Founder's Story</h2>
+            <p>Founded in 2024, UniCorn has grown to become the leading online learning platform dedicated to empowering students. Our mission is to provide a comprehensive and personalized learning experience for our users, ensuring that they achieve their full potential.</p>
+            <br><br><br><br><br>
+            <p>If you would want to get in touch directly with our supream founder
+                <b> You can</b> </p>
+        </div>
+        <div class="map">
+            <h2>Our Location</h2>
+            <div id="map" style="width: 600px; height: 600px;">
+        
+            </div>
+        </div>
+        
+    </div>
     <footer>
         <p>&copy; 2024 UniCorn. All Rights Reserved.</p>
-    </footer>
+    </footer >
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
 <script src="./aboutUs.js"></script>
 </body>
 </html>
