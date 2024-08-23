@@ -24,12 +24,16 @@
         </nav>
     </div>
     <div class="search-container">
-        <p id="filtreaza">Filtreaza</p>
         <input type="text" id="searchBar" onkeyup="searchFunction()" placeholder="Search for items...">
         <button type="submit"><i class="fa fa-search"></i></button>
  </div>
  <div class="produse">
+    <!-- filtres -->
+
+
     <div class="filters">
+        <button id="filtreaza" onclick="filterProducts()">Filtreaza</button>
+
         <h2>About</h2>
         <div class="aFilter">
             <input type="checkbox" id="programming" value="Programming">
@@ -53,28 +57,23 @@
         </div>
         <br>
         <h2>Price</h2>
-        <div class="aFilter">
-            <input type="checkbox" id="almostFree" value="Programming">
-            <label for="almostFree">0 - 0.01 Ron</label>
-        </div>
-        <div class="aFilter">
-            <input type="checkbox" id="cheap" value="Programming">
-            <label for="cheap">0.01 - 10 Ron</label>
-        </div>
-        <div class="aFilter">
-            <input type="checkbox" id="aGoodPrice" value="Programming">
-            <label for="aGoodPrice">10 - 60 Ron</label>
-        </div>
-        <div class="aFilter">
-            <input type="checkbox" id="almostExpensive" value="Programming">
-            <label for="math">60 - 100 Ron</label>
-        </div>
-        <div class="aFilter">
-            <input type="checkbox" id="Expensive" value="Programming">
-            <label for="Expensive">100+ Ron</label>
-        </div>
+        <div class="slider-container">
+            <div class="slider-values">
+              <span id="min-price">0 Ron</span>
+              <span id="max-price">900 Ron</span>
+            </div>
+            <div class="range-slider">
+              <input type="range" id="minRange" min="0" max="900" value="0" step="1">
+              <input type="range" id="maxRange" min="0" max="900" value="100" step="1">
+              <div id="rangeTrack" class="range-track"></div>
+            </div>
+          </div>
      </div>
+     <!-- courses -->
+
+
      <div class="produse1">
+
         <div class="produs" id="cpp">
             <img src="/media/cpp-svgrepo-com.svg">
             <div class="info">
@@ -82,6 +81,8 @@
                 <p>Price: 15 Ron</p>
             </div>
         </div>
+
+
         <div class="produs" id="java">
             <img src="/media/java-svgrepo-com.svg">
             <div class="info">
@@ -89,6 +90,8 @@
                 <p>Price: 20 Ron</p>
             </div>
         </div>
+
+
         <div class="produs" id="js">
             <img src="/media/js-svgrepo-com.svg">
             <div class="info">
@@ -96,6 +99,8 @@
                 <p>Price: 19 Ron</p>
             </div>
         </div>
+
+
         <div class="produs" id="assembly">
             <img src="/media/assembly-svgrepo-com.svg">
             <div class="info">
@@ -103,6 +108,8 @@
                 <p>Price: 900 Ron</p>
             </div>
         </div>
+
+
         <div class="produs" id="python">
             <img src="/media/python-svgrepo-com.svg">
             <div class="info">
@@ -110,11 +117,70 @@
                 <p>Price: 30 Ron</p>
             </div>
         </div>
+
+
         <div class="produs" id="lua">
             <img src="/media/lua-svgrepo-com.svg">
             <div class="info">
                 <h3>Python Programming course</h3>
                 <p>Price: 30 Ron</p>
+            </div>
+        </div>
+
+
+        <div class="produs" id="ruby">
+            <img src="/media/ruby-svgrepo-com.svg">
+            <div class="info">
+                <h3>Ruby Programming course</h3>
+                <p>Price: 25 Ron</p>
+            </div>
+        </div>
+
+        <div class="produs" id="php">
+            <img src="/media/php01-svgrepo-com.svg">
+            <div class="info">
+                <h3>PHP Programming course</h3>
+                <p>Price: 28 Ron</p>
+            </div>
+        </div>
+
+        <div class="produs" id="go">
+            <img src="/media/go-svgrepo-com.svg">
+            <div class="info">
+                <h3>Go Programming course</h3>
+                <p>Price: 22 Ron</p>
+            </div>
+        </div>
+
+        <div class="produs" id="swift">
+            <img src="/media/swift-svgrepo-com.svg">
+            <div class="info">
+                <h3>Swift Programming course</h3>
+                <p>Price: 27 Ron</p>
+            </div>
+        </div>
+
+        <div class="produs" id="kotlin">
+            <img src="/media/kotlin-svgrepo-com.svg">
+            <div class="info">
+                <h3>Kotlin Programming course</h3>
+                <p>Price: 35 Ron</p>
+            </div>
+        </div>
+
+        <div class="produs" id="rust">
+            <img src="/media/rust-svgrepo-com.svg">
+            <div class="info">
+                <h3>Rust Programming course</h3>
+                <p>Price: 45 Ron</p>
+            </div>
+        </div>
+
+        <div class="produs" id="sql">
+            <img src="/media/sql-database-generic-svgrepo-com.svg">
+            <div class="info">
+                <h3>SQL Programming course</h3>
+                <p>Price: 57 Ron</p>
             </div>
         </div>
      </div>
