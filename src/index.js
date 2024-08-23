@@ -10,4 +10,4 @@ setInterval(function() {
     text.style.animation = ' changeText 3s ease-in-out infinite';
     text.textContent = helloWorldArray[i];
     i = (i + 1) % helloWorldArray.length;
-}, 3000);
+}, 1000);
