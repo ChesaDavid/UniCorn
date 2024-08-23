@@ -1,0 +1,117 @@
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(90deg, #6a11cb, #2575fc);
+}
+.navbar {
+display: flex;
+color: white;
+padding: 10px;
+text-align: center;
+background: linear-gradient(90deg, #6a11cb, #2575fc);
+justify-content: space-between;
+top: 0; 
+width: 100%;
+padding-left: 10px;
+}
+.navbar a{
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    text-align: center;
+    margin-left: 3px;
+    margin-right: 3px;
+}
+.navbar a:hover:not(#cart){
+    color: white;
+    background-color: black;
+    border-radius: 5px;
+    transition: background-color 0.3s ease-in-out;
+    
+}
+.navbar nav{
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+}
+.user{
+    display: flex;
+}
+/* style contact form */
+
+.contact-form {
+    margin: 50px auto;
+    width: 500px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 1px 5px rgba(0,0,0,0.3);
+}
+
+.contact-form h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.contact-form label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+}
+
+.contact-form input[type="submit"] {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.contact-form input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+#scrollToTopBtn {
+    display: none; 
+    position: fixed;
+    bottom: 20px;
+    right: 30px;
+    z-index: 99; 
+    border: none;
+    outline: none;
+    background-color: #555;
+    color: white;
+    cursor: pointer;
+    padding: 15px;
+    border-radius: 10px;
+    font-size: 18px;
+    transition: opacity 0.3s ease;
+}
+
+#scrollToTopBtn.show {
+    display: block;
+    opacity: 0.8;
+    z-index: 1001;
+}
+
+#scrollToTopBtn:hover {
+    background-color: #333;
+}
+.responseMessage{
+    color: red;
+    font-size: 14px;
+    margin-top: 10px;
+    display: none;
+    margin-bottom: 10px; 
+}

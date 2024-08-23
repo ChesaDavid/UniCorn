@@ -140,11 +140,11 @@ footer {
 }
 
 #scrollToTopBtn {
-    display: none; /* Hidden by default */
+    display: none; 
     position: fixed;
     bottom: 20px;
     right: 30px;
-    z-index: 99; /* Place it on top */
+    z-index: 99; 
     border: none;
     outline: none;
     background-color: #555;
@@ -238,4 +238,12 @@ footer {
     font-size: 16px;
     color: grey;
     width: 300px;
+}
+.responseMessage{
+    color: red;
+    font-size: 14px;
+    margin-top: 10px;
+    display: none;
+    margin-bottom: 10px;
+ 
 }
