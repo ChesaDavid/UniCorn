@@ -13,6 +13,7 @@
             <p id="user">Guest</p>
         </div>
         <nav>
+            <a href="" id="authPart"></a>
             <a href="/dist/index.html">Home</a>
             <a href="/src/aboutUs.html">About Us</a>
             <a href="/src/produse.html">Produse</a>
@@ -47,12 +48,22 @@
         </form>
     </div>
     <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>    <script src="/src/register.js"></script>
+   
+    <!-- Need to make this -->
     <script type="module">
         // Import the functions you need from the SDKs you need
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-app.js";
         // TODO: Add SDKs for Firebase products that you want to use
         // https://firebase.google.com/docs/web/setup#available-libraries
-      
+        import {
+            getAuth,
+            createUserWithEmailAndPassword,
+            signInWithEmailAndPassword,
+            onAuthStateChanged,
+            signOut
+        } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-auth.js";
+
+
         // Your web app's Firebase configuration
         const firebaseConfig = {
           apiKey: "AIzaSyCpoZSMXrJlu4PItlFxiAf1vJanTtX2CDs",
@@ -66,25 +77,85 @@
       
         // Initialize Firebase
         const app = initializeApp(firebaseConfig);
-
+        const auth = getAuth(app);
         function register() {
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
-
-    auth.createUserWithEmailAndPassword(email, password)
-        .then((userCredential) => {
-            // Registration successful
-            alert('Registration successful!');
-            const user = userCredential.user;
-            console.log('User registered: ', user);
-        })
-        .catch((error) => {
-            // Handle errors here
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            alert('Error: ' + errorMessage);
-            console.log('Error code: ', errorCode, 'Message: ', errorMessage);
-        });
+            const email=document.getElementById('email');
+            const password=document.getElementById('password');
+            const signUpBtn=document.getElementById('signUpBtn');
+            const signInBtn=document.getElementById('signInBtn');
+            const signOutBtn=document.getElementById('signOutBtn');
+            const login=document.getElementById('login');
+            const authPart=document.getElementById('authPart');
+    
+    //hiding the top secret part initially 
+    authPart.style.display='none';
+    
+    //signup
+            const signUp= async ()=>{
+                const signUpEmail=email.value;
+                const signUpPassword=password.value;
+                createUserWithEmailAndPassword(auth, signUpEmail, signUpPassword)
+                .then((userCreditional) => {
+                    // Signed in 
+                    const user = userCreditional.user;
+                    console.log(user);
+                    alert('user created successfully');
+                })
+                .catch((error) => {
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                    console.log(errorCode,errorMessage);
+                    alert(errorMessage);
+                });
+            }
+       
+            //signin
+            const signIn= async ()=>{
+                const signInEmail=email.value;
+                const signInPassword=password.value;
+                signInWithEmailAndPassword(auth, signInEmail, signInPassword)
+                .then((userCredential) => {
+                    // Signed in
+                    const user = userCredential.user;
+                    console.log(user);
+                    alert('user signed in successfully');
+                })
+                .catch((error) => {
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                    console.log(errorCode,errorMessage);
+                    alert(errorMessage);
+                });
+            }
+           //check auth state
+           const checkAuthState=()=>{
+               onAuthStateChanged(auth,(user)=>{
+                   if(user){
+                       login.style.display='none';
+                       authPart.style.display='flex';
+                       console.log('user is signed in');
+                   }else{
+                    login.style.display='block';
+                    authPart.style.display='none';
+                    console.log('user is signed out');
+                   }
+               })
+             }
+            checkAuthState();
+            //signout
+            const userSignOut=()=>{
+                signOut(auth).then(() => {
+                
+                    console.log('user signed out');
+                    alert('user signed out successfully');
+                  }).catch((error) => {
+                    // An error happened.
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                    console.log(errorCode,errorMessage);
+                    alert(errorMessage);
+                  });
+            }
 }
       </script>
 </body>

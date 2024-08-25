@@ -3,17 +3,16 @@ body {
 }
 .navbar {
 display: flex;
-color: white;
+color: black;
 padding: 10px;
 text-align: center;
-background: linear-gradient(90deg, #6a11cb, #2575fc);
 justify-content: space-between;
 top: 0; 
 width: 100%;
 padding-left: 10px;
 }
 .navbar a{
-    color: white;
+    color: black;
     text-decoration: none;
     padding: 10px;
     text-align: center;
@@ -64,13 +63,14 @@ header {
     background: linear-gradient(90deg, #6a11cb, #2575fc);
     color: white;
     padding: 50px 20px;
+    border-radius: 25px;
 }
 
 header h1 {
     margin: 0;
     font-size: 3em;
     z-index: 100;
-    margin-top: -50px;
+    margin-top: 50px;
     
 }
 
