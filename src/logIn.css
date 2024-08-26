@@ -1,35 +1,37 @@
 
 .navbar {
-color: black;
-display: flex;
-padding: 10px;
-text-align: center;
-position: fixed;
-justify-content: space-between;
-top: 0; 
-width: 100%;
-z-index: 100;
-padding-left: 10px;
-}
-.navbar a{
-    color: black;
-    text-decoration: none;
-    padding: 10px;
-    text-align: center;
-    margin-left: 3px;
-    margin-right: 3px;
-}
-.navbar a:hover:not(#cart){
+    display: flex;
+    position: fixed;
     color: white;
-    background-color: black;
-    border-radius: 5px;
-    transition: background-color 0.3s ease-in-out;
-    
+    padding: 15px 20px;
+    background: linear-gradient(90deg, #6a11cb, #2575fc);
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    top: 0;
+    width: 100%;
+    z-index: 1000;
 }
-.navbar nav{
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    padding: 12px 18px;
+    margin: 0 5px;
+    font-weight: 500;
+    border-radius: 5px;
+    transition: background-color 0.4s ease, transform 0.3s ease;
+}
+
+.navbar a:hover:not(#cart) {
+    background-color: rgba(0, 0, 0, 0.7);
+    transform: scale(1.05);
+    color: white;
+}
+
+.navbar nav {
     display: flex;
     align-items: center;
-    margin-right: 10px;
 }
 
 body {

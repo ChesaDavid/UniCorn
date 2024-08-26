@@ -11,49 +11,56 @@ form.addEventListener('submit', e => {
     const message_html = form.elements['message'].value
     const emailjs = require('emailjs-com');
     // send to toEmail the data to send
-    function initEmailJs() {
-        emailjs.init('CMevXQW5LnhTaXrOx');
-    }
-    function sendToEmail(event){
-        event.preventDefault();
 
-        let FormData ={
-            from_name: name,
-            reply_to: email,
-            to_name: "David",
-            message: message_html
-        };
-
-        emailjs.send('service_iuzw96o','template_eyi80oa',FormData)
-         .then(() => {
-            alert("Message successfully send!");
-            console.log("SUCCES! ", response.status, response.text);
-          },function(error){
-            alert("FAILED... ", error.text);  
-            console.log("ERROR! ", error.message);
-          });
-    }
-    initEmailJs();
-    sendToEmail();
-    fetch(scriptURL, {
-      method: 'POST',
-      body: FromData
-    })
-    .then(response => response.json())
-    .then(data => {
-      document.getElementById('responseMessage').style.display = 'block';
-      if (data.result === 'success') {
-        document.getElementById('responseMessage').innerText = 'Form submitted successfully!';
-        form.reset();
-      } else {
-        document.getElementById('responseMessage').innerText = 'Error: ' + data.error;
-        form.reset();
+    if(name ==='' || email === '' || message_html === ''){
+      document.getElementById('responseMessage').innerHTML = 'Every field need to be completed';
+    }else{
+      document.getElementById('responseMessage').innerHTML = '';
+      function initEmailJs() {
+          emailjs.init('CMevXQW5LnhTaXrOx');
       }
-    })
-    .catch(error => {
-      document.getElementById('responseMessage').style.display = 'block';
-      document.getElementById('responseMessage').innerText = 'Request failed: ' + error;
-    });
+      function sendToEmail(event){
+          event.preventDefault();
+
+          let FormData ={
+              from_name: name,
+              reply_to: email,
+              to_name: "David",
+              message: message_html
+          };
+
+          emailjs.send('service_iuzw96o','template_eyi80oa',FormData)
+          .then(() => {
+              alert("Message successfully send!");
+              console.log("SUCCES! ", response.status, response.text);
+            },function(error){
+              alert("FAILED... ", error.text);  
+              console.log("ERROR! ", error.message);
+            });
+      }
+      initEmailJs();
+      sendToEmail();
+      fetch(scriptURL, {
+        method: 'POST',
+        body: FromData
+      })
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById('responseMessage').style.display = 'block';
+        if (data.result === 'success') {
+          document.getElementById('responseMessage').innerText = 'Form submitted successfully!';
+          form.reset();
+        } else {
+          document.getElementById('responseMessage').innerText = 'Error: ' + data.error;
+          form.reset();
+        }
+      })
+      .catch(error => {
+        document.getElementById('responseMessage').style.display = 'block';
+        document.getElementById('responseMessage').innerText = 'Request failed: ' + error;
+      });
+    }
+    
   });
 
   function sendToEmail() {
@@ -63,5 +70,5 @@ form.addEventListener('submit', e => {
       message: document.getElementById('message').value,
       subject: document.getElementById('subject').value
     }
-    emailjs.send('service_iuzw96o', 'template_c5h8248', perm)
+    emailjs.send('service_iuzw96o', 'template_c5h8248', perm).then(alert('Email sent'))
   }

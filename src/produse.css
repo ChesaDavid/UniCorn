@@ -2,34 +2,36 @@ body {
     font-family: Arial, sans-serif;
 }
 .navbar {
-display: flex;
-color: black;
-padding: 10px;
-text-align: center;
-justify-content: space-between;
-top: 0; 
-width: 100%;
-padding-left: 10px;
+  display: flex;
+  color: white;
+  padding: 15px 20px;
+  background: linear-gradient(90deg, #6a11cb, #2575fc);
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  top: 0;
+  width: 100%;
+  z-index: 1000;
 }
-.navbar a{
-    color: black;
-    text-decoration: none;
-    padding: 10px;
-    text-align: center;
-    margin-left: 3px;
-    margin-right: 3px;
+
+.navbar a {
+  color: white;
+  text-decoration: none;
+  padding: 12px 18px;
+  margin: 0 5px;
+  font-weight: 500;
+  border-radius: 5px;
+  transition: background-color 0.4s ease, transform 0.3s ease;
 }
-.navbar a:hover:not(#cart){
-    color: white;
-    background-color: black;
-    border-radius: 5px;
-    transition: background-color 0.3s ease-in-out;
-    
+
+.navbar a:hover:not(#cart) {
+  background-color: rgba(0, 0, 0, 0.7);
+  transform: scale(1.05);
 }
-.navbar nav{
-    display: flex;
-    align-items: center;
-    margin-right: 10px;
+
+.navbar nav {
+  display: flex;
+  align-items: center;
 }
 .user{
     display: flex;
@@ -37,6 +39,7 @@ padding-left: 10px;
 body {
     font-family: Arial, sans-serif;
 }
+
 
 .search-container {
     margin: 20px;
@@ -67,26 +70,30 @@ body {
     transition: background-color 0.3s ease-in-out;
 }
 #scrollToTopBtn {
-    display: none; 
-    position: fixed;
-    bottom: 20px;
-    right: 30px;
-    z-index: 99; 
-    border: none;
-    outline: none;
-    background-color: #555;
-    color: white;
-    cursor: pointer;
-    padding: 15px;
-    border-radius: 10px;
-    font-size: 18px;
-    transition: opacity 0.3s ease;
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  z-index: 99;
+  border: none;
+  outline: none;
+  background-color: #6a11cb;
+  color: white;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 50px;
+  font-size: 20px;
+  transition: background-color 0.3s ease, opacity 0.3s ease;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
 #scrollToTopBtn.show {
-    display: block;
-    opacity: 0.8;
-    z-index: 1001;
+  display: block;
+  opacity: 1;
+}
+
+#scrollToTopBtn:hover {
+  background-color: #4b0f97;
 }
 
 #scrollToTopBtn:hover {
@@ -106,7 +113,6 @@ form.example input[type=text] {
     width: 80%;
     background: #f1f1f1;
   }
-  
  .search-container button {
     float: left;
     width: 5%;
@@ -120,9 +126,11 @@ form.example input[type=text] {
     cursor: pointer;
     border: 1px solid black;
     border-radius: 5px;
+    ;
   }
   .search-container button:hover{
     background: #085f9c;
+
   }
   
 
@@ -138,6 +146,7 @@ form.example input[type=text] {
   }
   .produse{
     display: flex;
+
     gap: 10px;
     justify-content: space-between;
     flex-wrap: wrap;
@@ -206,6 +215,10 @@ form.example input[type=text] {
   .produs h3{
     margin-bottom: 5px;
     font-size: 16px;
+  }
+  a{
+    text-decoration: none;
+    color: black;
   }
   .produs{
     display: flex;
