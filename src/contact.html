@@ -5,6 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UniCORN</title>
     <link rel="stylesheet" href="./contact.css">
+    <!-- Firebase App (the core Firebase SDK) -->
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
+
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js"></script>
+    <script type="text/javascript"
+    src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+    </script>
+    <script type="text/javascript">
+    (function(){
+       emailjs.init({
+            publicKey: "CMevXQW5LnhTaXrOx", 
+         });
+    })();
+    </script>
+    <script src="./contact.js"></script>
 </head>
 <body>
     <div class="navbar">
@@ -28,14 +45,16 @@
         <form method="post" action="https://script.google.com/macros/s/AKfycbyzhiUupAV5Bh-drTU3t0hk88_gRGDHa8mwWYajIUmxH61g1zMKoUbiy-O78GiQ1YrEww/exec"
         name="contact-form" id="my-form">
             <label for="fname">First Name:</label><br>
-            <input type="text" id="fname" name="fname"><br>
+            <input type="text" id="fname" name="from_name"><br>
             <label for="lname">Last Name:</label><br>
-            <input type="text" id="lname" name="lname"><br>
+            <input type="text" id="lname" name="to_name"><br>
             <label for="email">Email:</label><br>
-            <input type="email" id="email" name="email"><br>
+            <input type="text" id="subject" name="subject"><br>
+            <label for="subject">Subject:</label><br>
+            <input type="text" id="email" name="replay_to"><br>
             <label for="message">Message:</label><br>
             <textarea id="message" name="message" rows="4" cols="50"></textarea><br>
-            <input type="submit" value="Submit" id="submit">
+            <input type="submit" value="Submit" id="submit" onclick="sendToEmail()">
             <p id="responseMessage"></p>
         </form>
     </div>
@@ -52,6 +71,8 @@
 </script>
     <script src="./contact.js"></script>
     <script src="./scrollToTopButton.js"></script>
+    <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+   
 </body>
 </html>

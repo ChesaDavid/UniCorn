@@ -6,6 +6,13 @@
     <title>UniCORN</title>
     <link rel="stylesheet" href="./produse.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Firebase App (the core Firebase SDK) -->
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
+
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js"></script>
+
 </head>
 <body>
     <div class="navbar">
@@ -25,7 +32,7 @@
     </div>
     <div class="search-container">
         <input type="text" id="searchBar" onkeyup="searchFunction()" placeholder="Search for items...">
-        <button type="submit"><i class="fa fa-search"></i></button>
+        <button type="submit" id="searchBtn"><i class="fa fa-search"></i></button>
  </div>
  <div class="produse">
     <!-- filtres -->
@@ -131,7 +138,7 @@
         <div class="produs" id="lua">
             <img src="/media/lua-svgrepo-com.svg">
             <div class="info">
-                <h3>Python Programming course</h3>
+                <h3>Lua Programming course</h3>
                 <p>Price: 30 Ron</p>
             </div>
         </div>

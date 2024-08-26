@@ -55,6 +55,13 @@ form.addEventListener('submit', e => {
       document.getElementById('responseMessage').innerText = 'Request failed: ' + error;
     });
   });
-function connectAndSendThroughEmailJs(){
 
-}
+  function sendToEmail() {
+    let perm = {
+      email: document.getElementById('email').value,
+      name: document.getElementById('fname').value,
+      message: document.getElementById('message').value,
+      subject: document.getElementById('subject').value
+    }
+    emailjs.send('service_iuzw96o', 'template_c5h8248', perm)
+  }

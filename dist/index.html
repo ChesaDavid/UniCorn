@@ -143,5 +143,14 @@
         // Initialize Firebase
         const app = initializeApp(firebaseConfig);
       </script>
+      <script>
+        const user = auth.currentUser();
+
+        if (user) {
+          document.getElementById("user").textContent = user.email;
+        } else {
+          document.getElementById("user").textContent = "Error";
+        }
+      </script>
 </body>
 </html>
