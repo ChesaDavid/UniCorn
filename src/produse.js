@@ -26,7 +26,8 @@ let produse = [
     { type: 'language', price: 55, html: document.getElementById('ukrainan'), name: 'Ukrainian lessons', whole: false },
     { type: 'language', price: 60, html: document.getElementById('romanian'), name: 'Romanian lessons', whole: false },
     { type: 'language', price: 50, html: document.getElementById('korean'), name: 'Korean lessons', whole: false },
-    { type: 'language', price: 45, html: document.getElementById('norwigian'), name: 'Norwegian lessons', whole: false }
+    { type: 'language', price: 45, html: document.getElementById('norwigian'), name: 'Norwegian lessons', whole: false },
+    { type: 'social', price:0.01, html: document.getElementById('me'), name: 'me', whole: true },
 ];
 
 const minRange = document.getElementById('minRange');
