@@ -141,6 +141,14 @@ body {
     color: #ff7043;
     font-weight: bold;
 }
+.upper{
+    display: flex;
+    gap: 100px;
+}
+#close{
+    height: 50px;
+    width: 50px;
+}
 
 #addToCart {
     display: inline-block;

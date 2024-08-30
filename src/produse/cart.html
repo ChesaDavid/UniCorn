@@ -22,5 +22,24 @@
             <!-- <a href="" id="secret" onclick="signOut()">LogOut</a> -->
         </nav>
     </div>
+    <div class="show-cart">
+        <h2>Your Cart</h2>
+        <div id="cart-items">
+            <p id="name"></p>
+            <p id="pret"></p>
+            <p id="cantitate"></p>
+            <p id="productList"></p>
+        </div>
+        <div id="cart-total">
+            Total: <span id="total-price">0</span> RON
+        </div>
+        <button id="checkout">Checkout</button>
+        <button id="clear-cart">Clear Cart</button>
+        <p id="cart-message"></p>
+        <a href="/src/produse.html" class="back-to-products">Back to products</a>
+    </div>
+    <div id="loading-spinner"></div>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>    
+    <script src="/src/index.js"></script>
 </body>
 </html>

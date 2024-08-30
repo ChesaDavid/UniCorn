@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UniCORN</title>
+    <style>
+        body
+        {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        .message{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            align-self: center;
+            align-content: center;
+        }
+        #message-title{
+            font-size: 40px;
+            font-weight: bold;
+        }
+        #message-p{
+            font-size: 32px;
+            font-style: italic;
+        }
+        .message img{
+            width: 200px;
+            height: 100%;
+        }
+        #back{
+          position: fixed;
+          top: 10px;
+          left: 10px;
+          background-color: #333;
+          color: #fff;
+          padding: 10px 20px;
+          border-radius: 5px;
+          cursor: pointer;
+          transition: background-color 0.3s ease; 
+        }
+        #back:hover{
+          background-color: #555;
+        }
+    </style>
+</head>
+<body>
+    <button id="back" onclick="onClick()">Back</button>
+    <script>
+        function onClick(){
+            location.replace('http://127.0.0.1:5500/dist/')
+        }
+    </script>
+    <div class="message">
+        <h1 id="message-title">Unfortunetly your message was been lost!</h1>
+        <img src="data:image/png;base64,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">
+        <p id="message-p">Message failed to send</p>
+    </div>
+</body>
+</html>

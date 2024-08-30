@@ -1,0 +1,2 @@
+-- authentication
+CREATE DATABASE IF NOT EXISTS

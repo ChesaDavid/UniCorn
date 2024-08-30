@@ -1,10 +1,24 @@
-const scriptURL = 'https://script.google.com/macros/s/AKfycbyB03r9jAAxqzJPzlOStMBaf7HjCpFwprnZByPZ1GNzQaHHl3wMCpbJPTlmI0btSIN9wA/exec'
-
+const scriptURL = 'https://script.google.com/macros/s/AKfycbz3ij9U0pvG-vnhrco5dEHqH_KSvg0e4kGw5fpJM_Zkz_sYEYeMGJT5UGcuq2nSRkTLcA/exec'
+// reset form when the page is loaded
 const form = document.forms['my-form']
+window.addEventListener('DOMContentLoaded', () => {
+  form.reset();
+});
+
+// form submission
+
 const toEmail = 'david.chesa.it@gmail.com';
 
-form.addEventListener('submit', e => {
+window.addEventListener('reset',()=>{
+  form.elements['name'].value = '';
+  form.elements['email'].value = '';
+  form.elements['message'].value = '';
+  document.getElementById('responseMessage').innerHTML = '';
+  e.preventDefault();
+});
 
+form.addEventListener('submit', e => {
+   location.replace('http://127.0.0.1:5500/src/afterConect.html')
     // prevent the form from submitting
     const name = form.elements['name'].value
     const email = form.elements['email'].value
@@ -70,5 +84,6 @@ form.addEventListener('submit', e => {
       message: document.getElementById('message').value,
       subject: document.getElementById('subject').value
     }
+    
     emailjs.send('service_iuzw96o', 'template_c5h8248', perm).then(alert('Email sent'))
   }

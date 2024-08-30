@@ -42,7 +42,7 @@
     <!-- contact -->
      <div id="contact" class="contact-form">
         <h2>Contact</h2>
-        <form method="post" action="https://script.google.com/macros/s/AKfycbyzhiUupAV5Bh-drTU3t0hk88_gRGDHa8mwWYajIUmxH61g1zMKoUbiy-O78GiQ1YrEww/exec"
+        <form method="post" action="https://script.google.com/macros/s/AKfycbz3ij9U0pvG-vnhrco5dEHqH_KSvg0e4kGw5fpJM_Zkz_sYEYeMGJT5UGcuq2nSRkTLcA/exec"
         name="contact-form" id="my-form">
             <label for="fname">First Name:</label><br>
             <input type="text" id="fname" name="fname"><br>
@@ -52,9 +52,16 @@
             <input type="email" id="email" name="email"><br>
             <label for="message">Message:</label><br>
             <textarea id="message" name="message" rows="4" cols="50"></textarea><br>
-            <input type="submit" value="Submit" id="submit">
+          <input type="submit" value="Submit" >
             <p id="responseMessage"></p>
         </form>
+        <script>
+            function resetForm() {
+                document.getElementById('my-form').reset();
+                document.getElementById('responseMessage').textContent = "";
+            }
+            resetForm();
+        </script>
     </div>
     <button id="scrollToTopBtn" title="Go to top">&#8679;</button>
     <script type="text/javascript"
