@@ -195,3 +195,4 @@ function updateSlider() {
 minRange.addEventListener('input', updateSlider);
 maxRange.addEventListener('input', updateSlider);
 updateSlider();
+window.addEventListener('DOMContentLoaded', filterProducts()); 
