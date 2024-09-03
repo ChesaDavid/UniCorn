@@ -33,6 +33,9 @@
     <div class="login-form">
         <h1>LogIn</h1>
         <form action="">
+            <label for="email">Username</label>
+            <input type="text" id="username" placeholder="username">
+
             <label for="email">Email</label>
             <input type="text" id="email" placeholder="email">
 
@@ -48,5 +51,13 @@
             </div>
         </form>
     </div>
+  
+    <script>
+        var data = JSON.parse(localStorage.getItem('username'));
+        if(data){
+            document.getElementById("user").textContent = data.username;
+            document.getElementById("secret").style.display = "block";
+        }
+    </script>
 </body>
 </html>

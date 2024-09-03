@@ -1,3 +1,9 @@
+let submit = document.getElementById('submit');
+submit.addEventListener('click', function(){
+  var data = document.getElementById('username').value;
+  localStorage.setItem('username', JSON.stringify(data));
+});
+
 function initializeApp() {
   console.log("Starting");
   const firebaseConfig = {

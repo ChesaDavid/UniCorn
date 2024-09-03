@@ -1,45 +1,54 @@
 function displayCart() {
-    // Retrieve the cart from localStorage
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
-
-    // Assuming you have a div or section with id 'cartItems' to display the cart products
     let cartItemsDiv = document.getElementById('cartItems');
-    cartItemsDiv.innerHTML = '';  // Clear the cart div
+    cartItemsDiv.innerHTML = '';
 
-    // Check if the cart is empty
     if (cart.length === 0) {
         cartItemsDiv.innerHTML = '<p>Your cart is empty.</p>';
         return;
     }
 
-    // Loop through the cart and display each product
+    let totalPrice = 0;
+
     cart.forEach((product, index) => {
-        // Create an element for each product (e.g., a div or list item)
         let productDiv = document.createElement('div');
         productDiv.classList.add('cart-item');
 
+        let productTotalPrice = product.price * product.quantity;
+        totalPrice += productTotalPrice;
+
         productDiv.innerHTML = `
             <h3>${product.name}</h3>
-            <p>Price: $${product.price}</p>
+            <p>Price: $${product.price.toFixed(2)}</p>
             <p>Quantity: ${product.quantity}</p>
+            <p>Total: $${productTotalPrice.toFixed(2)}</p>
             <button onclick="removeFromCart(${index})">Remove</button>
         `;
 
-        // Append the product div to the cartItemsDiv
         cartItemsDiv.appendChild(productDiv);
     });
+
+    // Display the total price
+    let totalDiv = document.createElement('div');
+    totalDiv.classList.add('cart-total');
+    totalDiv.innerHTML = `<h3>Total Price: $${totalPrice.toFixed(2)}</h3>`;
+    cartItemsDiv.appendChild(totalDiv);
+
+    // Clear Cart Button
+    let clearCartBtn = document.createElement('button');
+    clearCartBtn.textContent = 'Clear Cart';
+    clearCartBtn.addEventListener('click', clearCart);
+    cartItemsDiv.appendChild(clearCartBtn);
 }
 
 function removeFromCart(index) {
-    // Retrieve the cart from localStorage
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
-
-    // Remove the item at the specified index
     cart.splice(index, 1);
-
-    // Update the cart in localStorage
     localStorage.setItem('cart', JSON.stringify(cart));
+    displayCart();
+}
 
-    // Update the cart display
+function clearCart() {
+    localStorage.removeItem('cart');
     displayCart();
 }

@@ -56,6 +56,13 @@
             <p id="responseMessage"></p>
         </form>
         <script>
+            var data = JSON.parse(localStorage.getItem('username'));
+            if(data){
+                document.getElementById("user").textContent = data.username;
+                document.getElementById("secret").style.display = "block";
+            }
+        </script>
+        <script>
             function resetForm() {
                 document.getElementById('my-form').reset();
                 document.getElementById('responseMessage').textContent = "";

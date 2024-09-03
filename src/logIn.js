@@ -1,3 +1,8 @@
+let submit = document.getElementById('submit');
+submit.addEventListener('click', function(){
+  var data = document.getElementById('username').value;
+  localStorage.setItem('username', JSON.stringify(data));
+});
 const firebaseConfig = {
     apiKey: "AIzaSyCpoZSMXrJlu4PItlFxiAf1vJanTtX2CDs",
     authDomain: "unicorn-35e99.firebaseapp.com",

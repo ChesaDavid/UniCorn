@@ -89,7 +89,13 @@
           </div>
      </div>
      <!-- courses -->
-
+     <script>
+        var data = JSON.parse(localStorage.getItem('username'));
+        if(data){
+            document.getElementById("user").textContent = data.username;
+            document.getElementById("secret").style.display = "block";
+        }
+        </script>
 
      <div class="produse1">
         <a href="/src/produse/produs.html" onclick="sendDataCpp()">
@@ -282,6 +288,7 @@
                 </div>
             </div>
         </a>
+        
         <script>
             function sendDataGo() {
                 var data = {

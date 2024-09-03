@@ -136,6 +136,13 @@
     <div class="register">
         
     </div>
+    <script>
+        var data = JSON.parse(localStorage.getItem('username'));
+        if(data){
+            document.getElementById("user").textContent = data.username;
+            document.getElementById("secret").style.display = "block";
+        }
+    </script>
     <script src="/src/index.js"></script>
     <script type="module">
         // Import the functions you need from the SDKs you need
