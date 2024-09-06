@@ -1,4 +1,4 @@
-const scriptURL = 'https://script.google.com/macros/s/AKfycbz3ij9U0pvG-vnhrco5dEHqH_KSvg0e4kGw5fpJM_Zkz_sYEYeMGJT5UGcuq2nSRkTLcA/exec'
+const scriptURL = 'https://script.google.com/macros/s/AKfycbyaeiKD1Ejby9k-KdWJzfEO7XtE25wyWdxyXx_eWRQYJ7XUUwdssOGAA3AuFZE8FTlwKw/exec'
 // reset form when the page is loaded
 const form = document.forms['my-form']
 window.addEventListener('DOMContentLoaded', () => {
@@ -19,6 +19,7 @@ window.addEventListener('reset',()=>{
 
 form.addEventListener('submit', e => {
    location.replace('http://127.0.0.1:5500/src/afterConect.html')
+     e.preventDefault();
     // prevent the form from submitting
     const name = form.elements['name'].value
     const email = form.elements['email'].value
