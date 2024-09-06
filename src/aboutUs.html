@@ -89,12 +89,18 @@
                     <p>Instagram</p>
                 </div>
             </a>
+            </a>
             <a href="./contact.html">
                 <div class="one-connection">
                     <img src="/media/email-1573-svgrepo-com.svg">
                     <p>Email</p>
                 </div>
             </a>
+            <a href="https://buymeacoffee.com/chesadavid"></a>
+                <div class="one-connection">
+                    <img src="/media/buy-me-a-coffee-svgrepo-com.svg">
+                    <p>Donation</p>
+                </div>
         </div>
         <div class="short-founder-description">
             <h2>Founder's Story</h2>
@@ -110,6 +116,13 @@
         </div>
         
     </div>
+    <script>
+        var data = JSON.parse(localStorage.getItem('username'));
+        if(data){
+            document.getElementById("user").textContent = data.username;
+            document.getElementById("secret").style.display = "block";
+        }
+    </script>
     <footer>
         <p>&copy; 2024 UniCorn. All Rights Reserved.</p>
     </footer >
