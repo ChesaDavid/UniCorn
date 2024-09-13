@@ -75,6 +75,7 @@ body {
 
 .show-cart h2 {
     font-size: 24px;
+    width: 900px;
     color: #382B73;
     margin-bottom: 20px;
     text-align: center;
@@ -127,6 +128,65 @@ body {
 
 .back-to-products:hover {
     text-decoration: underline;
+}
+/* General cart-item styling */
+.cart-item {
+    border: 1px solid #ccc;
+    padding: 15px;
+    gap: 10px;
+    margin: 10px 0;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #f9f9f9;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cart-item h3 {
+    font-size: 18px;
+    margin-bottom: 5px;
+    color: #333;
+    width: 300px;
+}
+
+.cart-item p {
+    margin: 3px 0;
+    font-size: 14px;
+    color: #666;
+}
+
+/* Total price styling */
+.cart-item p:last-of-type {
+    font-weight: bold;
+    color: #000;
+}
+
+/* Remove button styling */
+.cart-item button {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.cart-item button:hover {
+    background-color: #c0392b;
+}
+
+/* Layout for small screens */
+@media (max-width: 600px) {
+    .cart-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .cart-item button {
+        margin-top: 10px;
+    }
 }
 
 /* Loading Spinner */

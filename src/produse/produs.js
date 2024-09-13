@@ -51,10 +51,10 @@ addBtn.addEventListener('click', function() {
 
     // Check if the product already exists in the cart
     let existingProduct = cart.find(product => product.id === selectedProduct.id);
-
+    const one = 1;
     if (existingProduct) {
         // Increase the quantity of the existing product
-        existingProduct.quantity += selectedProduct.quantity;
+        existingProduct.quantity += 1;
     } else {
         // Add the new product to the cart
         cart.push(selectedProduct);
