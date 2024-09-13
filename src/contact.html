@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UniCORN</title>
     <link rel="stylesheet" href="./contact.css">
+    <link rel="icon" href="https://www.svgrepo.com/show/407671/unicorn.svg" type="image/x-icon">
+
     <!-- Firebase App (the core Firebase SDK) -->
     <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
 
@@ -51,7 +53,7 @@
             <input type="email" id="email" name="email"><br>
             <label for="message">Message:</label><br>
             <textarea id="message" name="message" rows="4" cols="50"></textarea><br>
-          <input type="submit" value="Submit" id="submitBtn">
+          <input type="submit" value="Submit" id="submitBtn" onclick="move()">
             <p id="responseMessage"></p>
         </form>
         <script>
@@ -61,7 +63,9 @@
             form.addEventListener('submit', e => {
               e.preventDefault()
               fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-                .then(response => console.log('Success!', response))
+                .then(response => console.log('Success!', response),
+                                window.location('./afterConect.html','_self')
+                )
                 .catch(error => console.error('Error!', error.message))
             })
             

@@ -1,6 +1,10 @@
-function displayCart() {
+
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    console.log(cart);
     let cartItemsDiv = document.getElementById('cartItems');
+    if (!Array.isArray(cart)) {
+        cart = []; 
+    }
     cartItemsDiv.innerHTML = '';
 
     if (cart.length === 0) {
@@ -39,7 +43,6 @@ function displayCart() {
     clearCartBtn.textContent = 'Clear Cart';
     clearCartBtn.addEventListener('click', clearCart);
     cartItemsDiv.appendChild(clearCartBtn);
-}
 
 function removeFromCart(index) {
     let cart = JSON.parse(localStorage.getItem('cart')) || [];

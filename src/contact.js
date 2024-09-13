@@ -95,3 +95,9 @@ submitBtn.addEventListener('click', () => {
         window.location('./afterConect','_self');
     }, 3000);
 }); 
+function move(){
+    setTimeout(() => {
+       location.replace('./afterConect.html');
+    }, 3000);
+    
+}
