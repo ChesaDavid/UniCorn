@@ -31,7 +31,7 @@
         </div>
         <nav>
             <a href="/dist/index.html">Home</a>
-            <a href="/src/produse.html">Produse</a>
+            <a href="/src/produse.html">Products</a>
             <a href="/src/aboutUs.html">About Us</a>
             <a href="/src/logIn.html">LogIn</a>
             <a href="/src/register.html">Register</a>
@@ -51,7 +51,7 @@
             <input type="email" id="email" name="email"><br>
             <label for="message">Message:</label><br>
             <textarea id="message" name="message" rows="4" cols="50"></textarea><br>
-          <input type="submit" value="Submit">
+          <input type="submit" value="Submit" id="submitBtn">
             <p id="responseMessage"></p>
         </form>
         <script>
@@ -61,8 +61,8 @@
             form.addEventListener('submit', e => {
               e.preventDefault()
               fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-                .then(response => console.log('Success!', response), window.location('./afterContact.html'))
-                .catch(error => console.error('Error!', error.message), window.location('./afterError.html'))
+                .then(response => console.log('Success!', response))
+                .catch(error => console.error('Error!', error.message))
             })
             
         </script>
