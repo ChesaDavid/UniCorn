@@ -88,6 +88,10 @@
     
 //     emailjs.send('service_iuzw96o', 'template_c5h8248', perm).then(alert('Email sent'))
 //   }
+let finame = document.getElementById('fname').value;
+let liname = document.getElementById('lname').value;
+let eimail = document.getElementById('email').value;
+let miessage = document.getElementById('message').value;
 
 let submitBtn = document.getElementById('submitBtn');
 submitBtn.addEventListener('click', () => {
@@ -100,4 +104,12 @@ function move(){
        location.replace('./afterConect.html');
     }, 3000);
     
+}
+// trebuie sa fac funtia check
+function check(){
+    if(liname!== '' && finame!== '' && eimail!== '' && miessage!== ''){
+        document.getElementById('submitBtn').style.display = 'block';
+    }else{
+        document.getElementById('submitBtn').style.display = 'none';
+    }
 }

@@ -1,16 +1,16 @@
-// Log that the script is working
 console.log("Cart script is working");
 
-// Retrieve the cart from localStorage or initialize it as an empty array
 let cart = JSON.parse(localStorage.getItem('cart')) || [];
-
-// Get reference to the cart items display element
+if(cart.length==0){
+    document.getElementById('checkout').style.display = 'none';
+    document.getElementById('clear-cart').style.display = 'none';
+}
 let cartItemsDiv = document.getElementById('cartItems');
 
-// Get reference to the clear cart button
 let clearCartBtn = document.getElementById('clear-cart');
 
 // Function to display the cart items
+let add = document.getElementById('add${product.it}');
 function displayCart() {
     // Clear the cart items display
     cartItemsDiv.innerHTML = '';
@@ -43,42 +43,57 @@ function displayCart() {
             <p>Quantity: ${product.quantity}</p>
             <p>Total: $${productTotalPrice.toFixed(2)}</p>
             <button onclick="removeFromCart(${index})">Remove</button>
-        `;
-
-        // Append product to cart display
+            <button onclick="addToCart(${index})" id="add${product.id}" class="add-quantity">+</button>
+            `
+            if(product.quantity>1){
+                productDiv.innerHTML +=  `<button onclick="subtractFromCart(${index})" id="sub${product.id}" class="sub-quantity">-</button>`
+            }
+          
+        ;
+        
         cartItemsDiv.appendChild(productDiv);
+        
     });
 
-    // Display the total price
     let totalDiv = document.createElement('div');
     totalDiv.classList.add('cart-total');
     totalDiv.innerHTML = `<h3>Total Price: ${totalPrice.toFixed(2)} RON</h3>`;
     cartItemsDiv.appendChild(totalDiv);
 }
-
-// Function to remove a product from the cart by index
-function removeFromCart(index) {
-    // Remove the item at the specified index
-    cart.splice(index, 1);
-
-    // Update localStorage with the new cart array
+function addToCart(product){
+    let productInCart = cart.find(item => item.id === product);
+    if(productInCart){
+        productInCart.quantity++;
+    }else{
+        cart.push({id: product, name: products[product].name, price: products[product].price, quantity: 1});
+    }
     localStorage.setItem('cart', JSON.stringify(cart));
-
-    // Refresh the cart display
     displayCart();
 }
 
-// Event listener to clear the cart
+function removeFromCart(index) {
+    cart.splice(index, 1);
+
+    localStorage.setItem('cart', JSON.stringify(cart));
+    if(cart.length==0){
+        document.getElementById('checkout').style.display = 'none';
+        document.getElementById('clear-cart').style.display = 'none';
+    }   
+    displayCart();
+}
+
 clearCartBtn.addEventListener('click', function() {
-    // Clear the cart from localStorage
     localStorage.removeItem('cart');
 
-    // Clear the cart array
     cart = [];
-
-    // Refresh the cart display
+    document.getElementById('checkout').style.display = 'none';
+    document.getElementById('clear-cart').style.display = 'none';
     displayCart();
 });
+let checkoutBtn = document.getElementById('checkout');
 
-// Initial call to display the cart when the page loads
+checkoutBtn.addEventListener('click', function () {
+    window.location('./checkout.html','_self');
+});
 displayCart();
+localStorage.setItem("total",totalPrice);

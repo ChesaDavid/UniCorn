@@ -7,12 +7,17 @@ window.alert = function(message) {
 
     $('#mydialogDiv').html(message);
 
-
     $('#mydialogDiv').dialog({
         modal: true,
         title: 'Hello Customer',
         dialogClass: 'custom-alert-dialog', 
+
+       
+    
         buttons: {
+            "Go to Cart" : function() {
+                window.location.href = './cart.html';
+            },
             "OK": function() {
                 $(this).dialog("close");
             }
@@ -62,5 +67,5 @@ addBtn.addEventListener('click', function() {
 
     // Save the updated cart back to localStorage
     localStorage.setItem('cart', JSON.stringify(cart));
-    alert('Product added to the cart!');
+    alert('Product added to the cart!' +'<br> Thank you for shopping with us');
 });

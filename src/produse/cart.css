@@ -64,15 +64,20 @@ body {
     font-weight: bold;
 }
 .show-cart {
-    width: 80%;
+    width: 89%;
     max-width: 600px;
     margin: 50px auto;
-    padding: 20px;
+    padding: 90px;
     background-color: white;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
 }
-
+.add-quantity{
+    background-color: rgb(88, 88, 194);
+}
+.sub-quantity{
+    background-color: rgb(88, 88, 194);
+}
 .show-cart h2 {
     font-size: 24px;
     width: 900px;
