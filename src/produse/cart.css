@@ -194,7 +194,6 @@ body {
     }
 }
 
-/* Loading Spinner */
 #loading-spinner {
     display: none;
     width: 40px;
@@ -212,7 +211,6 @@ body {
     }
 }
 
-/* Media Queries */
 @media (max-width: 600px) {
     .show-cart {
         width: 95%;
