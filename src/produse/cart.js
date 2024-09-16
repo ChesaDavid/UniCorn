@@ -10,6 +10,7 @@ let cartItemsDiv = document.getElementById('cartItems');
 let clearCartBtn = document.getElementById('clear-cart');
 
 let add = document.getElementById('add${product.it}');
+let toatalPricee ;
 function displayCart() {
     cartItemsDiv.innerHTML = '';
 
@@ -29,6 +30,8 @@ function displayCart() {
         }
         let productTotalPrice = product.price * product.quantity;
         totalPrice += productTotalPrice;
+        toatalPricee = totalPrice;
+        localStorage.setItem("total",toatalPricee);
 
         // Create product HTML
         productDiv.innerHTML = `
@@ -92,10 +95,10 @@ clearCartBtn.addEventListener('click', function() {
     displayCart();
 });
 let checkoutBtn = document.getElementById('checkout');
+function moveToCheckout(){
 
-checkoutBtn.addEventListener('click', function () {
-    localStorage.setItem('checkout', JSON.stringify(totalPrice));
-    window.location.href = './checkout.html';
-});
+    window.location.href = "checkout.html";
+}
+
 displayCart();
-localStorage.setItem("total",totalPrice);
+localStorage.setItem("total",toatalPricee);

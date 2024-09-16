@@ -82,3 +82,15 @@ body {
     font-weight: bold;
     text-align: center;
 }
+.present{
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    width: 500px;
+    height: 500px;
+    flex-direction: column;
+    background-color: white;
+}
