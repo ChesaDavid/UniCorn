@@ -28,7 +28,7 @@ body {
     transition: background-color 0.4s ease, transform 0.3s ease;
 }
 
-.navbar a:hover:not(#cart) {
+.navbar a:hover:not(#Cart) {
     background-color: rgba(0, 0, 0, 0.7);
     transform: scale(1.05);
 }

@@ -18,4 +18,16 @@ const firebaseConfig = {
 
   const auth = firebase.auth();
   const database = firebase.database();
+  function login(){
+    signInWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+      // Signed in 
+      const user = userCredential.user;
+      // ...
+    })
+    .catch((err) => {
+      console.log(err.code);
+      console.log(err.message);
+    });
+  }
   
