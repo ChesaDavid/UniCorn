@@ -22,7 +22,12 @@ L.tileLayer('http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}', {
 }).addTo(map);
 
 var points = [
-    { cords: [45.741533, 21.227503], description: "UniCORN Headquarters" }
+    { cords: [45.741533, 21.227503], description: "UniCORN Headquarters" },
+    { cords: [45.743533, 21.229503], description: "UniCORN Office" },
+    { cords: [45.745533, 21.227503], description: "UniCORN Laboratories" },
+    { cords: [45.747533, 21.229503], description: "Pick up place 1"},
+    { cords: [45.749533, 21.427503], description: "Pick up place 2" },
+    { cords: [45.741533, 21.295503], description: "Pick up place 3" },
 ];
 
 points.forEach(function (point) {

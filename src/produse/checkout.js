@@ -1,3 +1,23 @@
+// chemata din More Info
+let is = false;
+
+console.log("aici");    
+function showInfo()
+{
+    console.log('aici')
+    if(is){
+        is = false;
+        let info = document.getElementById('more-info');
+        info.style.display = "none";
+    } else {
+        document.getElementById('more').innerHTML = 'Less Info';
+
+        is = true;
+        let info = document.getElementById('more-info');
+        info.style.display = "block";
+    }
+}
+
 let totalPrice = JSON.parse(localStorage.getItem('total'));
 console.log("total: " + total);
 let showTotal = document.getElementById('total-price');
@@ -27,3 +47,12 @@ function verifyCard(){
     }
     console.log(cardNumberValue, expierDateValue, cvvValue, cardholderNameValue);
 }
+
+// function displayInfo(){
+//     let cart = JSON.parse(localStorage.getItem('cart')) || [];
+//     cart.array.forEach(element => {
+        
+//     });
+
+// }
+// displayInfo();

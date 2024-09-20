@@ -33,7 +33,6 @@ function displayCart() {
         toatalPricee = totalPrice;
         localStorage.setItem("total",toatalPricee);
 
-        // Create product HTML
         productDiv.innerHTML = `
             <h3>${product.name}</h3>
             <p>Price: ${product.price.toFixed(2)}</p>

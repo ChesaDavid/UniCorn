@@ -20,7 +20,7 @@ window.alert = function(message) {
             },
             "OK": function() {
                 $(this).dialog("close");
-                window.location.href = './produs.html'
+                window.location.href = '/src/produse.html'
             }
         },
         close: function() {

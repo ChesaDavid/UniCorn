@@ -9,3 +9,4 @@ if(cart.length > 0){
 }else{
     cartimg.src = "/assets/cart-large-minimalistic-svgrepo-com (1).svg";
 }
+
