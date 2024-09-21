@@ -1,101 +1,109 @@
-let username = document.getElementById('username');
+document.addEventListener('DOMContentLoaded', function () {
+  let username = document.getElementById('username');
   let password = document.getElementById('password');
   let passwordConfirmation = document.getElementById('confirmPassword');
   let email = document.getElementById('email');
-function startRegister(){
+  let submitBtn = document.getElementById('submit');
+
+  // Function to validate the form inputs
+  function validateForm() {
+      let isValid = true;
+
+      // Reset error messages and styles
+      document.getElementById('notGood').innerHTML = '';
+      password.style.border = '';
+      passwordConfirmation.style.border = '';
+      username.style.border = '';
+      email.style.border = '';
+
+      // Check if passwords match
+      if (passwordConfirmation.value !== password.value) {
+          password.style.border = '1px solid red';
+          passwordConfirmation.style.border = '1px solid red';
+          document.getElementById('notGood').innerHTML = 'Passwords do not match';
+          isValid = false;
+      }
+
+      // Check if all fields are filled
+      if (!username.value || !email.value || !password.value || !passwordConfirmation.value) {
+          document.getElementById('notGood').innerHTML = 'All fields are required';
+
+          if (!username.value) username.style.border = '1px solid red';
+          if (!email.value) email.style.border = '1px solid red';
+          if (!password.value) password.style.border = '1px solid red';
+          if (!passwordConfirmation.value) passwordConfirmation.style.border = '1px solid red';
+
+          isValid = false;
+      }
   
-  let check = true;
-  if(passwordConfirmation.value !== password.value){
-    password.value = '';
-    passwordConfirmation.value = '';
-    password.style.border = '1px solid red'
-    passwordConfirmation.style.border = '1px solid red'
-    document.getElementById('submit').disabled  = true;
-    document.getElementById('notGood').innerHTML = 'Passwords do  not match';
-    check = false;
-    return;
-  }
-  if(!passwordConfirmation.value || !password.value || !username.value || !email.value){
-    check = false;
-    document.getElementById('submit').disabled  = true;
-    document.getElementById('notGood').innerHTML = 'All fields are required';
-    if(!passwordConfirmation.value){
-      passwordConfirmation.style.border = '1px solid red';  
-    }
-    if(!password.value){
-      password.style.border = '1px solid red';
-    }
-    if(!username.value){
-      username.style.border = '1px solid red';
-    }
-    if(!email.value){
-      email.style.border = '1px solid red';
-    }
-  }
-  if(check){
-    let Users = [];
-    let User = {
-      name: username,
-      email: email,
-      password: password
-    }
-    register(username,password);
-    document.getElementById('user').innerHTML = username;
-    Users.push(User);
-    localStorage.currentUser = username;
-
-    console.log(username);
-    localStorage.setItem('Users', JSON.stringify(Users));
-  }
-}
-console.log(username);
-function loadUsers() {
-  let usersData = localStorage.getItem('usersData');
-  if (usersData) {
-      return JSON.parse(usersData);
-  } else {
-      return { users: [] };
-  }
-}
-
-function saveUsers(data) {
-  localStorage.setItem('usersData', JSON.stringify(data));
-}
-
-function register(username, password) {
-  let usersData = loadUsers();
-
-  let userExists = usersData.users.some(user => user.username === username);
-  if (userExists) {
-      return { success: false, message: "Username already exists." };
+      return isValid;
   }
 
-  usersData.users.push({ username: username, password: password }); // Store password as plain text (just for example, hash in real cases)
-
-  saveUsers(usersData);
-
-  return { success: true, message: "User registered successfully." };
-}
-
-function login(username, password) {
-  let usersData = loadUsers();
-
-  let user = usersData.users.find(user => user.username === username && user.password === password);
-  
-  if (user) {
-      return { success: true, message: "Login successful." };
-  } else {
-      return { success: false, message: "Invalid username or password." };
+  // Function to dynamically enable/disable the submit button
+  function verifyRegister() {
+      submitBtn.disabled = !validateForm();
   }
-}
 
+  function startRegister() {
+      if (!validateForm()) {
+          return; 
+      }
 
-let registerResponse = register('john_doe', 'password123');
-console.log(registerResponse);
+      let Users = loadUsers();
+      let User = {
+          username: username.value,
+          email: email.value,
+          password: password.value
+      };
+      alert(username.value);
+      let registerResponse = register(username.value, password.value);
 
-let loginResponse = login('john_doe', 'password123');
-console.log(JSON.stringify(localStorage.currentUser));
-console.log(JSON.parse(localStorage.getItem('Users')))
+      if (registerResponse.success) {
+          document.getElementById('user').innerHTML = username.value;
+          Users.users.push(User);
+          localStorage.setItem('Users', JSON.stringify(Users));
+          localStorage.setItem('currentUser', username.value);
+          document.getElementById('notGood').innerHTML = 'Registration successful!';
+      } else {
+          document.getElementById('notGood').innerHTML = registerResponse.message;
+      }
+  }
+
+  // Load users from localStorage
+  function loadUsers() {
+      let usersData = localStorage.getItem('Users');
+      return usersData ? JSON.parse(usersData) : { users: [] };
+  }
+
+  // Save users to localStorage
+  function saveUsers(data) {
+      localStorage.setItem('Users', JSON.stringify(data));
+  }
+
+  // Register function to add new user
+  function register(username, password) {
+      let usersData = loadUsers();
+      let userExists = usersData.users.some(user => user.username === username);
+
+      if (userExists) {
+          return { success: false, message: "Username already exists." };
+      }
+
+      usersData.users.push({ username: username, password: password });
+      saveUsers(usersData);
+
+      return { success: true, message: "User registered successfully." };
+  }
+
+  // Event listeners for real-time form validation
+  username.addEventListener('input', verifyRegister);
+  email.addEventListener('input', verifyRegister);
+  password.addEventListener('input', verifyRegister);
+  passwordConfirmation.addEventListener('input', verifyRegister);
+  let d = JSON.parse(localStorage.getItem('Users'));
+console.log("Current user: " + d);
+});
+
 
 // let submit = document.getElementById('submit');
 // submit.addEventListener('click', function(){

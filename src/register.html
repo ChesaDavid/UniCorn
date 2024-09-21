@@ -45,27 +45,17 @@
 
             <label for="password">Password</label>
             <input type="password" id="password" placeholder="Password">
-            
+
             <label for="confirm">Confirm password</label>
             <input type="password" id="confirmPassword" placeholder="Confirm password">
 
-            <input type="submit" value="Register" id="submit" onclick="startRegister()">
-            
-            <div>
-                <p>Do you have an account</p>
-                <a href="/src/logIn.html">LogIn</a>
-            </div>
-            <p id="notGood"></p>
+            <p id="notGood" style="color: red;"></p>
+
+            <input type="submit" value="Register" id="submit" onclick="startRegister()" onmouseover="verifyRegister()">
+
         </form>
         <script src="./produse/checkCart.js"></script>
     </div>   
-    <script>
-        let data = JSON.parse(localStorage.getItem('username'));
-        if(data){
-            document.getElementById('user').innerHTML = data.JSON.toString();
-            
-        }
-    </script>
     <!-- Nu merge -->
 
     <!-- <script type="module">
@@ -176,5 +166,7 @@
             }
 }
       </script> -->
+      <script src="./register.js"></script>
+
 </body>
 </html>

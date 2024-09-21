@@ -19,7 +19,6 @@ window.alert = function(message) {
                 window.location.href = './cart.html';
             },
             "OK": function() {
-                $(this).dialog("close");
                 window.location.href = '/src/produse.html'
             }
         },

@@ -1,19 +1,31 @@
-// chemata din More Info
 let is = false;
+let info = document.getElementById('more-info');
 
-console.log("aici");    
+console.log("aici");  
+console.log(cart);
+cart.forEach((product)=>{
+    let productDiv = document.createElement('div');
+    productDiv.classList.add('cart-item');
+
+
+    productDiv.innerHTML = `
+        <h3>${product.name}</h3>
+        <p>Price: ${product.price} RON</p>
+        <p>Quantity: ${product.quantity}</p>
+    `;
+    info.appendChild(productDiv);
+});
+
 function showInfo()
 {
     console.log('aici')
     if(is){
         is = false;
-        let info = document.getElementById('more-info');
+        document.getElementById('more').innerHTML = 'More Info';
         info.style.display = "none";
     } else {
         document.getElementById('more').innerHTML = 'Less Info';
-
-        is = true;
-        let info = document.getElementById('more-info');
+        is = true;   
         info.style.display = "block";
     }
 }
@@ -47,7 +59,10 @@ function verifyCard(){
     }
     console.log(cardNumberValue, expierDateValue, cvvValue, cardholderNameValue);
 }
+function showMore()
+{
 
+}
 // function displayInfo(){
 //     let cart = JSON.parse(localStorage.getItem('cart')) || [];
 //     cart.array.forEach(element => {
