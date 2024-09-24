@@ -96,7 +96,7 @@ clearCartBtn.addEventListener('click', function() {
 let checkoutBtn = document.getElementById('checkout');
 function moveToCheckout(){
 
-    window.location.href = "checkout.html";
+    window.location.href = "./client/checkout.html";
 }
 
 displayCart();

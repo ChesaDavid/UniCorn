@@ -39,36 +39,36 @@
                     <p id="more" onclick="showInfo()">More Info</p>
                   
                 </div>
+               
                 <div class="pay">
                     <div class="payment-container">
                         <h2>Payment Information</h2>
-                        <form>
-                            <div class="card-info">
-                                <label for="card-number">Card Number</label>
-                                <input type="text" id="card-number" placeholder="1234 5678 9012 3456" maxlength="19">
+                        <div class="main">
+
+                            <div id="smart-button-container">
+                        
+                              <div style="text-align: center;">
+                        
+                                <div id="paypal-button-container"></div>
+                        
+                              </div>
+                        
                             </div>
-                            <div class="card-info">
-                                <label for="expiry-date">Expiry Date</label>
-                                <input type="text" id="expiry-date" placeholder="MM/YY" maxlength="5">
-                            </div>
-                            <div class="card-info">
-                                <label for="cvv">CVV</label>
-                                <input type="text" id="cvv" placeholder="123" maxlength="3">
-                            </div>
-                            <div class="card-info">
-                                <label for="cardholder-name">Cardholder Name</label>
-                                <input type="text" id="cardholder-name" placeholder="John Doe">
-                            </div>
-                            <button type="submit" class="pay-btn">Pay Now</button>
-                        </form>
+                        
+                          </div>
+                          <script src="https://www.paypal.com/sdk/js?client-id=AVElI8lf9qBBJ3nY_8R3o9IMb5tdJBbBlnKy6MKXUh7Boaor5qO9xHP82IJRKwX50_OY7nk7kovilpxV&enable-funding=venmo&currency=USD" data-sdk-integration-source="button-factory"></script>
+                          <script src="./checkout.js"></script>
+                          <script src="/src/produse/checkCart.js"></script>
                     </div>
                 </div>
             </div>
             
         </div>
     </div>
+   
     
-    <script src="./checkCart.js"></script>
-    <script src="./checkout.js"></script>
+      
+    
+   
 </body>
 </html>

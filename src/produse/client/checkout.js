@@ -1,5 +1,7 @@
 let is = false;
 let info = document.getElementById('more-info');
+let cart = JSON.parse(localStorage.getItem('cart')) || [];
+let total = JSON.parse(localStorage.getItem('total'));
 
 console.log("aici");  
 console.log(cart);
@@ -59,15 +61,61 @@ function verifyCard(){
     }
     console.log(cardNumberValue, expierDateValue, cvvValue, cardholderNameValue);
 }
+
+        console.log(total);
+        document.getElementById('total-price').textContent = "Total Price: $" + total;
+        function initPayPalButton(price) {
+    
+          paypal
+            .Buttons({
+              style: {
+                shape: "rect",
+                color: "gold",
+                layout: "vertical",
+                label: "paypal",
+              },
+              createOrder: function (data, actions) {
+                return actions.order.create({
+                  purchase_units: [{ amount: { currency_code: "USD", value: price } }],
+                });
+              },
+              onApprove: function (data, actions) {
+                return actions.order.capture().then(function (orderData) {
+                  // Full available details
+    
+                  console.log(
+                    "Capture result",
+                    orderData,
+                    JSON.stringify(orderData, null, 2)
+                  );
+    
+                  // Show a success message within this page, for example:
+    
+                  const element = document.getElementById("paypal-button-container");
+                  element.innerHTML = "";
+                  element.innerHTML = "<h3>Thank you for your payment!</h3>";
+    
+                  // Or go to another URL: actions.redirect('thank_you.html');
+    
+                });
+              },
+              onError: function (err) {
+                console.log(err);
+              },
+            })
+            .render("#paypal-button-container");
+        }
+    
+        initPayPalButton(total);
 function showMore()
 {
 
 }
-// function displayInfo(){
-//     let cart = JSON.parse(localStorage.getItem('cart')) || [];
-//     cart.array.forEach(element => {
+function displayInfo(){
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    cart.array.forEach(element => {
         
-//     });
+    });
 
-// }
-// displayInfo();
+}
+displayInfo();
