@@ -106,7 +106,7 @@ function verifyCard(){
             .render("#paypal-button-container");
         }
     
-        initPayPalButton(total);
+        initPayPalButton(totalPrice);
 function showMore()
 {
 
