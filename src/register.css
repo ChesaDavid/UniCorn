@@ -130,6 +130,58 @@
     }
 #notGood{
     color: red;
-    font-size: 19px;
+    font-size: 14px;
     margin-top: 10px;
+}
+.custom-alert-dialog .ui-dialog-titlebar {
+    background: linear-gradient(90deg, #6a11cb, #2575fc); 
+    color: white;  
+    font-family: 'Arial', sans-serif;
+    font-size: 18px;
+    border: none;
+}
+
+.custom-alert-dialog .ui-dialog-title {
+    text-align: center;
+    width: 100%;
+}
+
+.custom-alert-dialog .ui-dialog-content {
+    background-color: #fff;  
+    color: #333;  
+    padding: 20px;
+    font-family: 'Arial', sans-serif;
+    font-size: 16px;
+    text-align: center;
+    border-radius: 10px;  
+}
+
+.custom-alert-dialog .ui-dialog-buttonpane {
+    background-color: transparent;
+    border-top: none;
+    text-align: center;
+}
+
+.custom-alert-dialog .ui-dialog-buttonpane button {
+    background-color: #2575fc;  
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 15px;
+    cursor: pointer;
+    font-family: 'Arial', sans-serif;
+    font-size: 14px;
+}
+
+.custom-alert-dialog .ui-dialog-buttonpane button:hover {
+    background-color: #6a11cb;  
+}
+
+.custom-alert-dialog .ui-dialog {
+    border: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.custom-alert-dialog .ui-dialog-titlebar-close {
+    display: none;  
 }

@@ -44,7 +44,7 @@
  <div class="produse">
     <!-- filtres -->
 
-    <script src="./produse/checkCart.js"></script>
+  
     <div class="filters">
         <button id="filtreaza" onclick="filterProducts()">Filtreaza</button>
 
@@ -78,7 +78,7 @@
             </div>
             <div class="range-slider">
               <input type="range" id="minRange" min="0" max="900" value="0" step="1">
-              <input type="range" id="maxRange" min="0" max="900" value="100" step="1">
+              <input type="range" id="maxRange" min="0" max="900" value="900" step="1">
               <div id="rangeTrack" class="range-track"></div>
             </div>
           </div>
@@ -90,6 +90,19 @@
           <div class="aFilter">
             <input type="checkbox" value="Per hour" id="hour">
             <label for="hour">Per Hour</label>
+          </div>
+          <h2>Order</h2>
+          <div class="aFilter">
+            <input type="checkbox" value="PriceDecrese" id="decrese" onclick="uncheckI()">
+            <label for="decrese">Price Decrese</label>
+          </div>
+          <div class="aFilter">
+            <input type="checkbox" value="PriceIncrese" id="increse" onclick="uncheckD()">
+            <label for="increse">Price Increse</label>
+          </div>
+          <div class="aFilter">
+            <input type="checkbox" value="Alfabetical" id="alfabetical" onclick="uncheckID()">
+            <label for="alfabetical">Alfabetical</label>
           </div>
      </div>
      <!-- courses -->
@@ -803,7 +816,9 @@
 
  <button id="scrollToTopBtn" title="Go to top">&#8679;</button>
  <script src="./produse.js"></script> 
+ <script src="./showUsername.js"></script>
  <script src="./scrollToTopButton.js"></script>
+ <script src="./produse/checkCart.js"></script>
     <!-- <script src="https://www.gstatic.com/firebasejs/9.2.1/firebase-app.js"></script> -->
 </body>
 </html>

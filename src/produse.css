@@ -279,13 +279,13 @@ form.example input[type=text] {
   }
   .range-slider input[type="range"]::-webkit-slider-thumb {
     pointer-events: all;
-    width: 20px;
-    height: 20px;
+    width: 10px;
+    height: 10px;
     border-radius: 50%;
-    background-color: #4CAF50;
-    -webkit-appearance: none;
+    background-color: #070a07;
+    -webkit-appearance: caret;
     position: relative;
-    z-index: 1;
+    z-index: 0;
   }
   .slider-values {
     display: flex;
@@ -297,7 +297,8 @@ form.example input[type=text] {
   .range-track {
     position: absolute;
     height: 6px;
-    background-color: #4CAF50;
+    background-color: #6a11cb;
+    /* aicis */
     border-radius: 5px;
     z-index: 0;
   }

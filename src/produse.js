@@ -1,3 +1,5 @@
+console.log("Produse.js is probably working")
+
 let produse = [
     { type: 'programming', price: 15, html: document.getElementById('cpp'), name: 'C++ Programming Courses', whole: true },
     { type: 'programming', price: 20, html: document.getElementById('java'), name: 'Java Programming Courses', whole: true },
@@ -29,6 +31,8 @@ let produse = [
     { type: 'language', price: 45, html: document.getElementById('norwigian'), name: 'Norwegian lessons', whole: false },
     { type: 'social', price:0.01, html: document.getElementById('me'), name: 'me', whole: true },
 ];
+let increseOrder = [0.01, 15, 19, 20, 22, 25, 27, 28, 30, 30, 35, 45, 45, 50, 50, 55, 57, 60, 65, 65, 70, 75, 75, 80, 85, 90, 95, 100, 900];
+let decreseOrder = [900, 100, 95, 90, 85, 80, 75, 75, 70, 65, 65, 60, 57, 55, 50, 50, 45, 45, 35, 30, 30, 28, 27, 25, 22, 20, 19, 15, 0.01];
 
 const minRange = document.getElementById('minRange');
 const maxRange = document.getElementById('maxRange');
@@ -41,8 +45,40 @@ function getFilterValues() {
         math: document.getElementById('science').checked,
         social: document.getElementById('social').checked,
         whole: document.getElementById('whole').checked,
-        hour: document.getElementById('hour').checked
+        hour: document.getElementById('hour').checked,
+        decrese: document.getElementById('decrese').checked,
+        increse: document.getElementById('increse').checked
+
     };
+}
+
+function uncheckI(){
+    document.getElementById('increse').checked = false;
+    document.getElementById('alfabetical').checked = false;
+    increseOrder.array.forEach(element => {
+        produse.forEach(product => {
+            if(product.html.display === 'block'){
+                if(product.price === element){
+                    product.html.style.display = 'block';
+                }
+            }
+        });
+    });
+}
+function hideProducts(){
+    produse.forEach(product => {
+       product.html.style.display = 'none';
+    });
+}
+function uncheckD(){
+    document.getElementById('decrese').checked = false;
+    document.getElementById('alfabetical').checked = false;
+}
+function uncheckID(){
+    console.log("Mergi?");
+    hideProducts();
+    document.getElementById('decrese').checked = false;
+    document.getElementById('increse').checked = false;
 }
 
 let searchTxt;

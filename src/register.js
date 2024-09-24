@@ -1,107 +1,133 @@
+window.alert = function(message) {
+    if ($('#mydialogDiv').length === 0) {
+        $('body').append('<div id="mydialogDiv"></div>');
+    }
+
+    $('#mydialogDiv').html(message);
+
+    $('#mydialogDiv').dialog({
+        modal: true,
+        title: 'Hello Customer',
+        dialogClass: 'custom-alert-dialog', 
+
+       
+    
+        buttons: {
+            "OK": function() {
+                $(this).dialog("close");
+            }
+        },
+        close: function() {
+            $(this).dialog("close");
+        },
+        width: 400,  
+        resizable: false  
+    });
+}
+
+
+var use = 'Guest';
+
 document.addEventListener('DOMContentLoaded', function () {
-  let username = document.getElementById('username');
-  let password = document.getElementById('password');
-  let passwordConfirmation = document.getElementById('confirmPassword');
-  let email = document.getElementById('email');
-  let submitBtn = document.getElementById('submit');
+    let username = document.getElementById('username');
+    let password = document.getElementById('password');
+    let passwordConfirmation = document.getElementById('confirmPassword');
+    let email = document.getElementById('email');
+    let submitBtn = document.getElementById('submit');
 
-  // Function to validate the form inputs
-  function validateForm() {
-      let isValid = true;
+    function validateForm() {
+        let isValid = true;
 
-      // Reset error messages and styles
-      document.getElementById('notGood').innerHTML = '';
-      password.style.border = '';
-      passwordConfirmation.style.border = '';
-      username.style.border = '';
-      email.style.border = '';
+        document.getElementById('notGood').innerHTML = '';
+        password.style.border = '';
+        passwordConfirmation.style.border = '';
+        username.style.border = '';
+        email.style.border = '';
 
-      // Check if passwords match
-      if (passwordConfirmation.value !== password.value) {
-          password.style.border = '1px solid red';
-          passwordConfirmation.style.border = '1px solid red';
-          document.getElementById('notGood').innerHTML = 'Passwords do not match';
-          isValid = false;
-      }
+        if (passwordConfirmation.value !== password.value) {
+            password.style.border = '1px solid red';
+            passwordConfirmation.style.border = '1px solid red';
+            document.getElementById('notGood').innerHTML = 'Passwords do not match';
+            isValid = false;
+        }
 
-      // Check if all fields are filled
-      if (!username.value || !email.value || !password.value || !passwordConfirmation.value) {
-          document.getElementById('notGood').innerHTML = 'All fields are required';
+        if (!username.value || !email.value || !password.value || !passwordConfirmation.value) {
+            document.getElementById('notGood').innerHTML = 'All fields are required';
 
-          if (!username.value) username.style.border = '1px solid red';
-          if (!email.value) email.style.border = '1px solid red';
-          if (!password.value) password.style.border = '1px solid red';
-          if (!passwordConfirmation.value) passwordConfirmation.style.border = '1px solid red';
+            if (!username.value) username.style.border = '1px solid red';
+            if (!email.value) email.style.border = '1px solid red';
+            if (!password.value) password.style.border = '1px solid red';
+            if (!passwordConfirmation.value) passwordConfirmation.style.border = '1px solid red';
 
-          isValid = false;
-      }
-  
-      return isValid;
-  }
+            isValid = false;
+        }
+    
+        return isValid;
+    }
 
-  // Function to dynamically enable/disable the submit button
-  function verifyRegister() {
-      submitBtn.disabled = !validateForm();
-  }
+    // Function to dynamically enable/disable the submit button
+    function verifyRegister() {
+        submitBtn.disabled = !validateForm();
+    }
 
-  function startRegister() {
-      if (!validateForm()) {
-          return; 
-      }
+    submitBtn.addEventListener('click', function(){
+        if (!validateForm()) {
+            return; 
+        }
 
-      let Users = loadUsers();
-      let User = {
-          username: username.value,
-          email: email.value,
-          password: password.value
-      };
-      alert(username.value);
-      let registerResponse = register(username.value, password.value);
+        let Users = loadUsers();
+        let User = {
+            username: username.value,
+            email: email.value,
+            password: password.value
+        };
 
-      if (registerResponse.success) {
-          document.getElementById('user').innerHTML = username.value;
-          Users.users.push(User);
-          localStorage.setItem('Users', JSON.stringify(Users));
-          localStorage.setItem('currentUser', username.value);
-          document.getElementById('notGood').innerHTML = 'Registration successful!';
-      } else {
-          document.getElementById('notGood').innerHTML = registerResponse.message;
-      }
-  }
+        let registerResponse = register(username.value, password.value);
+        alert(`Hello World! ${username.value} <br> Please buy as much as we want`);
+        
+        if (registerResponse.success) {
+            Users.users.push(User);
+            localStorage.setItem('Users', JSON.stringify(Users));
+            localStorage.setItem('currentUser', JSON.stringify(username.value)); 
+            document.getElementById('notGood').innerHTML = 'Registration successful!';
+        } else {
+            document.getElementById('notGood').innerHTML = registerResponse.message;
+        }
+    });
 
-  // Load users from localStorage
-  function loadUsers() {
-      let usersData = localStorage.getItem('Users');
-      return usersData ? JSON.parse(usersData) : { users: [] };
-  }
+    // Load users from localStorage
+    function loadUsers() {
+        let usersData = localStorage.getItem('Users');
+        return usersData ? JSON.parse(usersData) : { users: [] };
+    }
 
-  // Save users to localStorage
-  function saveUsers(data) {
-      localStorage.setItem('Users', JSON.stringify(data));
-  }
+    // Save users to localStorage
+    function saveUsers(data) {
+        localStorage.setItem('Users', JSON.stringify(data));
+    }
 
-  // Register function to add new user
-  function register(username, password) {
-      let usersData = loadUsers();
-      let userExists = usersData.users.some(user => user.username === username);
+    // Register function to add new user
+    function register(username, password) {
+        let usersData = loadUsers();
+        let userExists = usersData.users.some(user => user.username === username);
 
-      if (userExists) {
-          return { success: false, message: "Username already exists." };
-      }
+        if (userExists) {
+            return { success: false, message: "Username already exists." };
+        }
 
-      usersData.users.push({ username: username, password: password });
-      saveUsers(usersData);
+        usersData.users.push({ username: username, password: password });
+        saveUsers(usersData);
 
-      return { success: true, message: "User registered successfully." };
-  }
+        return { success: true, message: "User registered successfully." };
+    }
 
-  // Event listeners for real-time form validation
-  username.addEventListener('input', verifyRegister);
-  email.addEventListener('input', verifyRegister);
-  password.addEventListener('input', verifyRegister);
-  passwordConfirmation.addEventListener('input', verifyRegister);
-  let d = JSON.parse(localStorage.getItem('Users'));
-console.log("Current user: " + d);
+    // Event listeners for real-time form validation
+    username.addEventListener('input', verifyRegister);
+    email.addEventListener('input', verifyRegister);
+    password.addEventListener('input', verifyRegister);
+    passwordConfirmation.addEventListener('input', verifyRegister);
+    console.log(localStorage.getItem('currentUser'));   
+    let d = JSON.parse(localStorage.getItem('Users'));
 });
 
 
