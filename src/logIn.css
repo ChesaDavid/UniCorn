@@ -108,6 +108,11 @@ a {
     font-size: 14px;
     transition: color 0.3s ease-in-out;
 }
+#notGood{
+    color: red;
+    font-size: 14px;
+    margin-top: 10px;
+}
 
 a:hover {
     color: #0056b3;
