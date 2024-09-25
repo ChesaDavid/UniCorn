@@ -6,7 +6,7 @@ document.getElementById('user').innerHTML = username;
 
 let logoutBtn = document.getElementById('logout');      
 
-if(username !== null){
+if(username !== ''){
     document.getElementById('secret').style.display = 'block';
     document.getElementById('login').style.display = 'none';
     document.getElementById('register').style.display = 'none';
@@ -17,6 +17,9 @@ if(username !== null){
 }
 
 function signOut(){
-    localStorage.removeItem('currentUser');
+    localStorage.setItem('currentUser','');
     window.location.href = "index.html";
+}
+function goToHome(){
+    window.location.href = "/dist/index.html";
 }

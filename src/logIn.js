@@ -30,4 +30,9 @@
 //       console.log(err.message);
 //     });
 //   }
-  
+localStorage.setItem('currentUser','');
+  function pressOnSubmit(){
+    var data = document.getElementById('username').value;
+    localStorage.setItem('currentUser', JSON.stringify(data));
+    window.location.href = '/dist/index.html';
+  }
