@@ -1,5 +1,4 @@
-let storedUser = localStorage.getItem('currentUser');
-let username = (storedUser && storedUser.length > 0) ? storedUser : 'Guest';
+let username = localStorage.getItem('currentUser');
 
 console.log(username);
 
@@ -7,7 +6,7 @@ document.getElementById('user').innerHTML = username;
 
 let logoutBtn = document.getElementById('logout');      
 
-if(username !== "Guest"){
+if(username !== null){
     document.getElementById('secret').style.display = 'block';
     document.getElementById('login').style.display = 'none';
     document.getElementById('register').style.display = 'none';
