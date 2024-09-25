@@ -107,15 +107,5 @@ function verifyCard(){
         }
     
         initPayPalButton(totalPrice);
-function showMore()
-{
 
-}
-function displayInfo(){
-    let cart = JSON.parse(localStorage.getItem('cart')) || [];
-    cart.array.forEach(element => {
-        
-    });
 
-}
-displayInfo();
