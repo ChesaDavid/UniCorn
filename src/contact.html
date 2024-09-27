@@ -49,13 +49,17 @@
         <form method="post" name="submit-to-google-sheet" id="my-form">
             <label for="fname">First Name:</label><br>
             <input type="text" id="fname" name="fname"><br>
+            <p id="fnameError" for="error">First Name missing</p>
             <label for="lname">Last Name:</label><br>
             <input type="text" id="lname" name="lname"><br>
+            <p id="lnameError" for="error">Last Name missing</p>
             <label for="email">Email:</label><br>
             <input type="email" id="email" name="email"><br>
+            <p id="emailError">Not a valid email</p>
             <label for="message">Message:</label><br>
             <textarea id="message" name="message" rows="4" cols="50"></textarea><br>
-          <input type="submit" value="Submit" id="submitBtn" onclick="move()" onmouseover = check()>
+            <p id="messageError" for="error">Message is missing</p>
+            <input type="submit" value="Submit" id="submitBtn">
             <p id="responseMessage"></p>
         </form>
         <script src="./produse/checkCart.js"></script>

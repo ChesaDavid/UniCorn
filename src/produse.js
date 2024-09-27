@@ -47,7 +47,8 @@ function getFilterValues() {
         whole: document.getElementById('whole').checked,
         hour: document.getElementById('hour').checked,
         decrese: document.getElementById('decrese').checked,
-        increse: document.getElementById('increse').checked
+        increse: document.getElementById('increse').checked,
+        alfabetical : document.getElementById('alfabetical').checked
 
     };
 }
@@ -55,15 +56,6 @@ function getFilterValues() {
 function uncheckI(){
     document.getElementById('increse').checked = false;
     document.getElementById('alfabetical').checked = false;
-    increseOrder.array.forEach(element => {
-        produse.forEach(product => {
-            if(product.html.display === 'block'){
-                if(product.price === element){
-                    product.html.style.display = 'block';
-                }
-            }
-        });
-    });
 }
 function hideProducts(){
     produse.forEach(product => {
@@ -118,7 +110,7 @@ function search() {
 }
 function matchesFilters(product, filters) {
     
-
+ 
     if (filters.programming && product.type !== 'programming') {
         if (filters.cooking && product.type === 'school') {
         } else if (filters.languages && product.type === 'language') {
@@ -199,6 +191,44 @@ function filterProducts() {
         }
     });
 }
+// Function to hide all products
+function hideAllProducts(produse) {
+    produse.forEach(product => {
+        product.html.style.display = 'none';
+    });
+}
+
+// Function to show products based on a price order
+function showProductsByPriceOrder(produse, priceOrder) {
+    priceOrder.forEach(price => {
+        produse.forEach(product => {
+            if (product.price === price) {
+                product.html.style.display = 'block';
+            }
+        });
+    });
+}
+
+// Function to apply filter based on increasing order
+function applyIncreaseFilter(produse, increseOrder) {
+    hideAllProducts(produse);
+    showProductsByPriceOrder(produse, increseOrder);
+}
+
+// Function to apply filter based on decreasing order
+function applyDecreaseFilter(produse, decreseOrder) {
+    hideAllProducts(produse);
+    showProductsByPriceOrder(produse, decreseOrder);
+}
+
+// Applying the filter based on user selection
+if (filters.increse) {
+    applyIncreaseFilter(produse, increseOrder);
+}
+
+if (filters.decrese) {
+    applyDecreaseFilter(produse, decreseOrder);
+}
 
 function resetFilter(){
     produse.forEach(product => product.html.style.display = 'block');
@@ -220,8 +250,8 @@ function updateSlider() {
     if (maxValue < minValue + 1) {
         maxRange.value = minValue + 1;
     }
-    minPrice.textContent = `${minRange.value} Ron`;
-    maxPrice.textContent = `${maxRange.value} Ron`;
+    minPrice.textContent = `${minRange.value} USD`;
+    maxPrice.textContent = `${maxRange.value} USD`;
     const minPercent = (minRange.value / minRange.max) * 100;
     const maxPercent = (maxRange.value / maxRange.max) * 100;
     rangeTrack.style.left = `${minPercent}%`;

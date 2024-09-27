@@ -147,3 +147,24 @@ body {
     font-weight: bold;
     text-align: center;
 }
+#emailError{
+    color: red;
+    display: none;
+}
+#messageError{
+    color: red;
+    display: none;
+
+}
+#fnameError{
+    color: red;
+    display: none;
+}
+#lnameError{
+    color: red;
+    display: none;
+}
+#messageError{
+    color:red;
+    display: none;
+}
