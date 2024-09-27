@@ -37,18 +37,13 @@
     <div class="login-form">
         <h1>LogIn</h1>
         <form action="">
-            <label for="email">Username</label>
-            <input type="text" id="username" placeholder="username">
-
-            <label for="email">Email</label>
-            <input type="text" id="email" placeholder="email">
-
-            <label for="password">Password</label>
-            <input type="password" id="password" placeholder="password">
+            <div>
+                <input type="text" id="username" placeholder="Username">
+                <input type="password" id="password" placeholder="Password">
+                <div id="loginError" style="color: red;"></div>
+                <button id="loginBtn">Login</button>
+            </div>
             
-            <p id="notGood" style="color: red;"></p>
-
-            <input type="submit" value="Log In" id="submit">
             
             <a href="/src/forgotPassword.html" id="forgot">Forgot Password?</a>
             <div>
@@ -57,6 +52,9 @@
             </div>
         </form>
     </div>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
     <script src="./logIn.js"></script>
     <script src="./produse/checkCart.js"></script>
     <script src="./showUsername.js"></script>

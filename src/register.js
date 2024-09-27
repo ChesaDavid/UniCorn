@@ -1,4 +1,5 @@
-window.alert = function(message) {
+// Override the default alert to show a custom dialog box
+window.alert = function (message) {
     if ($('#mydialogDiv').length === 0) {
         $('body').append('<div id="mydialogDiv"></div>');
     }
@@ -8,96 +9,102 @@ window.alert = function(message) {
     $('#mydialogDiv').dialog({
         modal: true,
         title: 'Hello Customer',
-        dialogClass: 'custom-alert-dialog', 
-
-       
-    
+        dialogClass: 'custom-alert-dialog',
         buttons: {
-            "OK": function() {
+            "OK": function () {
                 $(this).dialog("close");
             }
         },
-        close: function() {
+        close: function () {
             $(this).dialog("close");
         },
-        width: 400,  
-        resizable: false  
+        width: 400,
+        resizable: false
     });
-}
+};
 
-
-var use = 'Guest';
-
+// Wait until the DOM is loaded
 document.addEventListener('DOMContentLoaded', function () {
-    let username = document.getElementById('username');
-    let password = document.getElementById('password');
-    let passwordConfirmation = document.getElementById('confirmPassword');
-    let email = document.getElementById('email');
-    let submitBtn = document.getElementById('submit');
+    const username = document.getElementById('username');
+    const password = document.getElementById('password');
+    const passwordConfirmation = document.getElementById('confirmPassword');
+    const email = document.getElementById('email');
+    const submitBtn = document.getElementById('submit');
+    const errorDiv = document.getElementById('notGood');
 
+    // Validate the form fields
     function validateForm() {
         let isValid = true;
+        errorDiv.innerHTML = '';
+        resetBorders();
 
-        document.getElementById('notGood').innerHTML = '';
-        password.style.border = '';
-        passwordConfirmation.style.border = '';
-        username.style.border = '';
-        email.style.border = '';
-
+        // Check if passwords match
         if (passwordConfirmation.value !== password.value) {
-            password.style.border = '1px solid red';
-            passwordConfirmation.style.border = '1px solid red';
-            document.getElementById('notGood').innerHTML = 'Passwords do not match';
+            setError(password, 'Passwords do not match');
+            setError(passwordConfirmation, 'Passwords do not match');
+            errorDiv.innerHTML = 'Passwords do not match';
             isValid = false;
         }
 
+        // Check if all fields are filled
         if (!username.value || !email.value || !password.value || !passwordConfirmation.value) {
-            document.getElementById('notGood').innerHTML = 'All fields are required';
-
-            if (!username.value) username.style.border = '1px solid red';
-            if (!email.value) email.style.border = '1px solid red';
-            if (!password.value) password.style.border = '1px solid red';
-            if (!passwordConfirmation.value) passwordConfirmation.style.border = '1px solid red';
-
+            errorDiv.innerHTML = 'All fields are required';
+            if (!username.value) setError(username);
+            if (!email.value) setError(email);
+            if (!password.value) setError(password);
+            if (!passwordConfirmation.value) setError(passwordConfirmation);
             isValid = false;
         }
-    
         return isValid;
     }
 
-    // Function to dynamically enable/disable the submit button
-    function verifyRegister() {
-        submitBtn.disabled = !validateForm();
+    // Reset the input field borders to default
+    function resetBorders() {
+        username.style.border = '';
+        email.style.border = '';
+        password.style.border = '';
+        passwordConfirmation.style.border = '';
     }
 
-    submitBtn.addEventListener('click', function(){
-        if (!validateForm()) {
-            return; 
-        }
+    // Highlight invalid fields
+    function setError(field, message = '') {
+        field.style.border = '1px solid red';
+    }
 
-        let Users = loadUsers();
-        let User = {
+    // Handle the form submission
+    submitBtn.addEventListener('click', function () {
+        if (!validateForm()) return;
+
+        const users = loadUsers();
+        const newUser = {
             username: username.value,
             email: email.value,
             password: password.value
         };
 
-        let registerResponse = register(username.value, password.value);
-        alert(`Hello World! ${username.value} <br> Please buy as much as we want`);
-        
+        const registerResponse = registerUser(username.value, password.value);
+
+        // Show a custom alert dialog
+        alert(`Hello ${username.value}, please buy as much as we want!`);
+        console.log(username.value);
+        setTimeout(function () {
+            console.log('here');
+        }, 2000);
+
+        // Handle the registration response
         if (registerResponse.success) {
-            Users.users.push(User);
-            localStorage.setItem('Users', JSON.stringify(Users));
-            localStorage.setItem('currentUser', JSON.stringify(username.value)); 
-            document.getElementById('notGood').innerHTML = 'Registration successful!';
+            users.users.push(newUser);
+            saveUsers(users);
+            localStorage.setItem('currentUser', JSON.stringify(username.value));
+            errorDiv.innerHTML = 'Registration successful!';
         } else {
-            document.getElementById('notGood').innerHTML = registerResponse.message;
+            errorDiv.innerHTML = registerResponse.message;
         }
     });
 
     // Load users from localStorage
     function loadUsers() {
-        let usersData = localStorage.getItem('Users');
+        const usersData = localStorage.getItem('Users');
         return usersData ? JSON.parse(usersData) : { users: [] };
     }
 
@@ -106,10 +113,10 @@ document.addEventListener('DOMContentLoaded', function () {
         localStorage.setItem('Users', JSON.stringify(data));
     }
 
-    // Register function to add new user
-    function register(username, password) {
-        let usersData = loadUsers();
-        let userExists = usersData.users.some(user => user.username === username);
+    // Register a new user
+    function registerUser(username, password) {
+        const usersData = loadUsers();
+        const userExists = usersData.users.some(user => user.username === username);
 
         if (userExists) {
             return { success: false, message: "Username already exists." };
@@ -122,12 +129,12 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // Event listeners for real-time form validation
-    username.addEventListener('input', verifyRegister);
-    email.addEventListener('input', verifyRegister);
-    password.addEventListener('input', verifyRegister);
-    passwordConfirmation.addEventListener('input', verifyRegister);
-    console.log(localStorage.getItem('currentUser'));   
-    let d = JSON.parse(localStorage.getItem('Users'));
+    username.addEventListener('input', validateForm);
+    email.addEventListener('input', validateForm);
+    password.addEventListener('input', validateForm);
+    passwordConfirmation.addEventListener('input', validateForm);
+
+    console.log(localStorage.getItem('currentUser'));
 });
 
 

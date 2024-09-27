@@ -32,45 +32,65 @@
 //   }
 
 
-console.log("go it");
-  function validateForm(username,email,password) {
-        let isValid = true;
+// Function to validate the login form
+// Function to validate the login form fields
+function validateLoginForm(username, password) {
+  let isValid = true;
+  const loginError = document.getElementById('loginError');
+  
+  // Clear any previous error messages
+  loginError.innerHTML = '';
+  username.style.border = '';
+  password.style.border = '';
 
-        document.getElementById('notGood').innerHTML = '';
-        username.style.border = '';
-        email.style.border = '';
-
-        if (passwordConfirmation.value !== password.value) {
-            password.style.border = '1px solid red';
-            passwordConfirmation.style.border = '1px solid red';
-            document.getElementById('notGood').innerHTML = 'Passwords do not match';
-            isValid = false;
-        }
-
-        if (!username.value || !email.value || !password.value || !passwordConfirmation.value) {
-            document.getElementById('notGood').innerHTML = 'All fields are required';
-
-            if (!username.value) username.style.border = '1px solid red';
-            if (!email.value) email.style.border = '1px solid red';
-            if (!password.value) password.style.border = '1px solid red';
-            if (!passwordConfirmation.value) passwordConfirmation.style.border = '1px solid red';
-
-            isValid = false;
-        }
-    
-        return isValid;
-    }
-
-function pressOnSubmit(){
-  let username = document.getElementById('username');
-    let email = document.getElementById('email');
-    let submitBtn = document.getElementById('submit');
-    if(validateForm(username, email, submitBtn)){
-      localStorage.setItem('currentUser', JSON.stringify(data));
-      window.location.href = '/dist/index.html';
-    }else{
-      alert('Invalid form');
-    }
-    console.log(localStorage.getItem('currentUser'));
-    
+  // Check if both username and password are filled
+  if (!username.value) {
+      username.style.border = '1px solid red';
+      loginError.innerHTML = 'Username is required';
+      isValid = false;
   }
+
+  if (!password.value) {
+      password.style.border = '1px solid red';
+      loginError.innerHTML = 'Password is required';
+      isValid = false;
+  }
+
+  return isValid;
+}
+
+// Function to handle login attempt
+function handleLogin() {
+  const username = document.getElementById('username');
+  const password = document.getElementById('password');
+  
+  // Validate form inputs before proceeding
+  if (!validateLoginForm(username, password)) {
+      return; // Stop if the form is invalid
+  }
+
+  // Retrieve the stored users from localStorage
+  const storedUsers = JSON.parse(localStorage.getItem('Users')) || { users: [] };
+  
+  // Check if the provided credentials match an existing user
+  const foundUser = storedUsers.users.find(user => 
+      user.username === username.value && user.password === password.value
+  );
+
+  if (foundUser) {
+      // Store the current logged-in user and redirect
+      localStorage.setItem('currentUser', JSON.stringify(username.value));
+      window.location.href = '/dist/index.html'; // Redirect to homepage or dashboard
+  } else {
+      // Display error if username or password is incorrect
+      document.getElementById('loginError').innerHTML = 'Invalid username or password';
+      password.style.border = '1px solid red';
+      username.style.border = '1px solid red';
+  }
+}
+
+// Event listener for login button click
+document.getElementById('loginBtn').addEventListener('click', handleLogin);
+
+// For testing purposes, let's log the current user in localStorage
+console.log('Current logged-in user:', sessionStorage.getItem('currentUser'));
