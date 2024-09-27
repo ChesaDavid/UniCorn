@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
 submitBtn.addEventListener('click', () => {
     setTimeout(() => {
         window.location.href = './afterContact.html';
-    }, 3000);
+    }, 2000);
 }); 
 
 submitBtn.disabled = true;
@@ -23,6 +23,11 @@ function validateall(){
         document.getElementById('email').style.border = '1px solid black';
         btn1 = true;
     } else{
+        if(email.length === 0){
+            document.getElementById('emailError').innerHTML = 'Eail missing';
+        }else{
+            document.getElementById('emailError').innerHTML = 'Invalid email format';
+        }
         document.getElementById('email').style.border = '1px solid red';
         document.getElementById('emailError').style.display = 'block';
     }

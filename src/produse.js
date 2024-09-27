@@ -46,9 +46,6 @@ function getFilterValues() {
         social: document.getElementById('social').checked,
         whole: document.getElementById('whole').checked,
         hour: document.getElementById('hour').checked,
-        decrese: document.getElementById('decrese').checked,
-        increse: document.getElementById('increse').checked,
-        alfabetical : document.getElementById('alfabetical').checked
 
     };
 }
@@ -190,44 +187,6 @@ function filterProducts() {
             product.html.style.display = 'none';
         }
     });
-}
-// Function to hide all products
-function hideAllProducts(produse) {
-    produse.forEach(product => {
-        product.html.style.display = 'none';
-    });
-}
-
-// Function to show products based on a price order
-function showProductsByPriceOrder(produse, priceOrder) {
-    priceOrder.forEach(price => {
-        produse.forEach(product => {
-            if (product.price === price) {
-                product.html.style.display = 'block';
-            }
-        });
-    });
-}
-
-// Function to apply filter based on increasing order
-function applyIncreaseFilter(produse, increseOrder) {
-    hideAllProducts(produse);
-    showProductsByPriceOrder(produse, increseOrder);
-}
-
-// Function to apply filter based on decreasing order
-function applyDecreaseFilter(produse, decreseOrder) {
-    hideAllProducts(produse);
-    showProductsByPriceOrder(produse, decreseOrder);
-}
-
-// Applying the filter based on user selection
-if (filters.increse) {
-    applyIncreaseFilter(produse, increseOrder);
-}
-
-if (filters.decrese) {
-    applyDecreaseFilter(produse, decreseOrder);
 }
 
 function resetFilter(){
